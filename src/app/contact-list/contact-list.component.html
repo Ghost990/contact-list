@@ -18,7 +18,7 @@
            contacts starting with the same letter.
        -->
       <div class="row contact-list-item-row no-gutters">
-          <div *ngFor="let contact of contacts" class="col-12 contact-item-single-row">
+          <div *ngFor="let contact of localContacts" class="col-12 contact-item-single-row">
             <div *ngIf="contact.name.charAt(0) === letter" class="row no-gutters">
               <div class="contact-image col-2">
                 <img [src]="contact.picture" alt="{{ contact.name }}">

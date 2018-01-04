@@ -17,6 +17,7 @@ export class ContactListComponent implements OnInit {
   contacts: any[];
   firstLetter: string[] = [];
   uniqueArray: string[] = [];
+  localContacts = [];
   contactCount: number;
   private url = 'assets/generated.json';
 
@@ -31,9 +32,16 @@ export class ContactListComponent implements OnInit {
         return a.name > b.name;
       });
 
+      let JSONContacts = JSON.stringify(this.contacts);
+
+
       /** Iterating through the contacts array and saving the first letter in another one **/
 
-      for (let contact of this.contacts) {
+      this.localContacts = JSON.parse(localStorage['contacts']);
+      this.localContacts.push({_id: 11, name: 'Zoltan', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
+      console.log(this.localContacts);
+
+      for (let contact of this.localContacts) {
         this.firstLetter.push(contact.name.charAt(0));
       }
 
@@ -42,7 +50,8 @@ export class ContactListComponent implements OnInit {
        **/
 
       this.removeDuplicates(this.firstLetter);
-      console.log(this.uniqueArray);
+
+      localStorage.setItem('contacts', JSONContacts);
 
       this.contactCount = this.contacts.length;
 
