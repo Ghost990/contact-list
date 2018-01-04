@@ -24,38 +24,12 @@ export class ContactListComponent implements OnInit {
 
   constructor(private http: Http) {
 
-    /** Getting the JSON and sorting it alphabetically with the name keys **/
+    if (localStorage.getItem('contacts') === null) {
+      this.getJsonContacts(http: Http);
+    } else {
+      this.getLocalContacts();
+    }
 
-    http.get(this.url).subscribe(response => {
-      this.contacts = response.json();
-      this.contacts.sort(function(a, b) {
-        return a.name > b.name;
-      });
-
-      let JSONContacts = JSON.stringify(this.contacts);
-
-
-      /** Iterating through the contacts array and saving the first letter in another one **/
-
-      this.localContacts = JSON.parse(localStorage['contacts']);
-      this.localContacts.push({_id: 11, name: 'Zoltan', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
-      console.log(this.localContacts);
-
-      for (let contact of this.localContacts) {
-        this.firstLetter.push(contact.name.charAt(0));
-      }
-
-      /** Removing duplicates from the array for every same starting letter
-       *  will be grouped under a single letter.
-       **/
-
-      this.removeDuplicates(this.firstLetter);
-
-      localStorage.setItem('contacts', JSONContacts);
-
-      this.contactCount = this.contacts.length;
-
-    });
   }
 
   ngOnInit() {
@@ -69,6 +43,56 @@ export class ContactListComponent implements OnInit {
       }
     }
     return this.uniqueArray;
+  }
+
+  getJsonContacts(http: Http) {
+    http.get(this.url).subscribe(response => {
+      this.contacts = response.json();
+      this.contacts.sort(function(a, b) {
+        return a.name > b.name;
+      });
+
+
+      /** Iterating through the contacts array and saving the first letter in another one **/
+
+      for (let contact of this.contacts) {
+        this.firstLetter.push(contact.name.charAt(0));
+      }
+
+      /** Removing duplicates from the array for every same starting letter
+       *  will be grouped under a single letter.
+       **/
+
+      this.removeDuplicates(this.firstLetter);
+
+      this.contactCount = this.contacts.length;
+
+      let JSONContacts = JSON.stringify(this.contacts);
+
+      localStorage.setItem('contacts', JSONContacts);
+
+    });
+  }
+
+  getLocalContacts() {
+    /** Iterating through the contacts array and saving the first letter in another one **/
+
+    this.contacts = JSON.parse(localStorage['contacts']);
+    this.contacts.push({_id: 13, name: 'Zoltan', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
+    localStorage.setItem('contacts', JSON.stringify(this.contacts));
+    console.log(this.contacts);
+
+    for (let contact of this.contacts) {
+      this.firstLetter.push(contact.name.charAt(0));
+    }
+
+    /** Removing duplicates from the array for every same starting letter
+     *  will be grouped under a single letter.
+     **/
+
+    this.removeDuplicates(this.firstLetter);
+
+    this.contactCount = this.contacts.length;
   }
 
 
