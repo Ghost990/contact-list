@@ -1,0 +1,92 @@
+[
+  {
+    "_id": "5a4d1dac1fa45abdcd277f49",
+    "name": "Battle Welch",
+    "picture": "http://placehold.it/32x32",
+    "email": "battlewelch@noralex.com",
+    "phone": "+1 (991) 507-3647",
+    "company": "QUINTITY",
+    "isFavorite": false
+  },
+  {
+    "_id": "5a4d1dacb9d84e9ed7696228",
+    "name": "Hines Hayden",
+    "picture": "http://placehold.it/32x32",
+    "email": "hineshayden@quintity.com",
+    "phone": "+1 (941) 595-3353",
+    "company": "ESCENTA",
+    "isFavorite": false
+  },
+  {
+    "_id": "5a4d1dac9bd0c725f8895ba2",
+    "name": "Melva Holt",
+    "picture": "http://placehold.it/32x32",
+    "email": "melvaholt@escenta.com",
+    "phone": "+1 (838) 514-3963",
+    "company": "ENERFORCE",
+    "isFavorite": true
+  },
+  {
+    "_id": "5a4d1dacd9af014cfb344402",
+    "name": "Yolanda Wagner",
+    "picture": "http://placehold.it/32x32",
+    "email": "yolandawagner@enerforce.com",
+    "phone": "+1 (989) 501-3397",
+    "company": "GINKLE",
+    "isFavorite": false
+  },
+  {
+    "_id": "5a4d1dac9888f030bfa3bd35",
+    "name": "Virgie Richard",
+    "picture": "http://placehold.it/32x32",
+    "email": "virgierichard@ginkle.com",
+    "phone": "+1 (829) 403-3968",
+    "company": "ZENSUS",
+    "isFavorite": true
+  },
+  {
+    "_id": "5a4d1dac3d18aa1920500d7a",
+    "name": "Sexton Mccormick",
+    "picture": "http://placehold.it/32x32",
+    "email": "sextonmccormick@zensus.com",
+    "phone": "+1 (814) 524-2956",
+    "company": "MOLTONIC",
+    "isFavorite": false
+  },
+  {
+    "_id": "5a4d1dac03054b7f7e3b8a3e",
+    "name": "Lynch Huber",
+    "picture": "http://placehold.it/32x32",
+    "email": "lynchhuber@moltonic.com",
+    "phone": "+1 (943) 435-3924",
+    "company": "EXOSTREAM",
+    "isFavorite": true
+  },
+  {
+    "_id": "5a4d1dac311e13d0e75c161d",
+    "name": "Gloria Mendoza",
+    "picture": "http://placehold.it/32x32",
+    "email": "gloriamendoza@exostream.com",
+    "phone": "+1 (944) 433-3272",
+    "company": "ZOID",
+    "isFavorite": true
+  },
+  {
+    "_id": "5a4d1dac17162624b9b44947",
+    "name": "Elisa Boyer",
+    "picture": "http://placehold.it/32x32",
+    "email": "elisaboyer@zoid.com",
+    "phone": "+1 (853) 520-2554",
+    "company": "ZILLAN",
+    "isFavorite": true
+  },
+  {
+    "_id": "5a4d1dac6d16476e210366c5",
+    "name": "Lora Maldonado",
+    "picture": "http://placehold.it/32x32",
+    "email": "loramaldonado@zillan.com",
+    "phone": "+1 (969) 526-2127",
+    "company": "FANGOLD",
+    "isFavorite": false
+  }
+]

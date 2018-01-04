@@ -4,30 +4,40 @@
   3 contacts
 </div>
 <ul class="contact-list list-unstyled no-gutters">
-  <li class="list-header">
+  <li *ngFor="let letter of firstLetter" class="list-header">
     <div class="row">
       <div class="col-10 offset-2">
-        U
+        {{ letter }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <ul class="list-unstyled">
+          <li *ngFor="let contact of contacts" class="list-item">
+            <span *ngIf="contact.name.charAt(0) === letter">
+              {{ contact.name }}
+            </span>
+          </li>
+        </ul>
       </div>
     </div>
   </li>
-  <li class="list-item">
-    <app-contact-list-item></app-contact-list-item>
-  </li>
-  <li class="list-item">
-    <app-contact-list-item></app-contact-list-item>
-  </li>
-  <li class="list-item">
-    <app-contact-list-item></app-contact-list-item>
-  </li>
-  <li class="list-header">
-    <div class="row">
-      <div class="col-10 offset-2">
-        K
-      </div>
-    </div>
-  </li>
-  <li class="list-item">
-    <app-contact-list-item></app-contact-list-item>
-  </li>
+
+  <!--</li>-->
+  <!--<li class="list-item">-->
+    <!--<app-contact-list-item></app-contact-list-item>-->
+  <!--</li>-->
+  <!--<li class="list-item">-->
+    <!--<app-contact-list-item></app-contact-list-item>-->
+  <!--</li>-->
+  <!--<li class="list-header">-->
+    <!--<div class="row">-->
+      <!--<div class="col-10 offset-2">-->
+        <!--K-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</li>-->
+  <!--<li class="list-item">-->
+    <!--<app-contact-list-item></app-contact-list-item>-->
+  <!--</li>-->
 </ul>

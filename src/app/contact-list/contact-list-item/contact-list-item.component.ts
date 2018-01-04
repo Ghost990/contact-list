@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-contact-list-item',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-list-item.component.scss']
 })
 export class ContactListItemComponent implements OnInit {
+  @Input() contactList: any[];
 
   constructor() { }
 

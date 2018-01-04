@@ -9,6 +9,7 @@ import { EditContactComponent } from './contact-panel/edit-contact/edit-contact.
 import { NewContactComponent } from './contact-panel/new-contact/new-contact.component';
 import { ContactSearchComponent } from './contact-list/contact-search/contact-search.component';
 import { ContactListItemComponent } from './contact-list/contact-list-item/contact-list-item.component';
+import {HttpModule} from '@angular/http';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ContactListItemComponent } from './contact-list/contact-list-item/conta
     ContactListItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
