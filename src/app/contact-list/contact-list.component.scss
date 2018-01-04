@@ -8,6 +8,11 @@
   opacity: .6;
 }
 
+.contact-list {
+  max-height: 550px;
+  overflow-y: scroll;
+}
+
 .contact-list-item-row {
   font-size: 1em;
   min-height: 50px;

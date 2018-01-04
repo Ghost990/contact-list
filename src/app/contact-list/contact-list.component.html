@@ -4,6 +4,7 @@
   {{ contactCount }} contacts
 </div>
 
+<!-- Iterating through the unique letters array, creating a list item (groups) for the letters  -->
 <ul class="contact-list list-unstyled no-gutters">
   <li *ngFor="let letter of uniqueArray">
     <div>
@@ -12,6 +13,10 @@
           {{ letter }}
         </div>
       </div>
+      <!-- Iterating through the contacts and if the contact name's first character is the
+           same as the group header (the previously outputted letter) then show all the
+           contacts starting with the same letter.
+       -->
       <div class="row contact-list-item-row no-gutters">
           <div *ngFor="let contact of contacts" class="col-12 contact-item-single-row">
             <div *ngIf="contact.name.charAt(0) === letter" class="row no-gutters">
@@ -27,40 +32,3 @@
     </div>
   </li>
 </ul>
-
-
-<!--<ul class="contact-list list-unstyled no-gutters">-->
-  <!--<li *ngFor="let letter of firstLetter">-->
-    <!--<div class="row list-header">-->
-      <!--<div class="col-10 offset-2">-->
-        <!--{{ letter }}-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row contact-list-item-row no-gutters">-->
-      <!--<div class="col-12">-->
-        <!--<ul class="list-unstyled">-->
-          <!--<li *ngFor="let contact of contacts" class="list-item">-->
-            <!--<div *ngIf="contact.name.charAt(0) === letter" class="row no-gutters">-->
-              <!--<div class="contact-image col-2">-->
-                <!--<img [src]="contact.picture" alt="{{ contact.name }}">-->
-              <!--</div>-->
-              <!--<div class="contact-name col-10">-->
-                <!--{{ contact.name }}-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--&lt;!&ndash;<div *ngFor="let contact of contacts" class="row contact-list-item-row">&ndash;&gt;-->
-      <!--&lt;!&ndash;<div *ngIf="contact.name.charAt(0) === letter">&ndash;&gt;-->
-        <!--&lt;!&ndash;<div class="col-2 contact-list-item-image">&ndash;&gt;-->
-          <!--&lt;!&ndash;<img src="http://www.pi-cube.com/wp-content/uploads/2015/04/team-placeholder.jpg" alt="" class="img-fluid">&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--&lt;!&ndash;<div class="col-10 contact-list-item-name">&ndash;&gt;-->
-          <!--&lt;!&ndash;<p>{{ contact.name }}</p>&ndash;&gt;-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-  <!--</li>-->
-<!--</ul>-->
