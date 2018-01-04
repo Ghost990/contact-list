@@ -9,8 +9,9 @@ import { Http } from '@angular/http';
 export class ContactListComponent implements OnInit {
   contacts: any[];
   firstLetter: string[] = [];
-  groupedNames = {};
-  private url = 'http://localhost:4200/assets/generated.json';
+  uniqueArray: string[] = [];
+  contactCount: number;
+  private url = 'assets/generated.json';
 
 
   constructor(private http: Http) {
@@ -21,26 +22,14 @@ export class ContactListComponent implements OnInit {
       });
       this.contacts.sort();
 
-      // for (let i = 0; i < this.contacts.length; i++ ) {
-      //   for (let contact of this.contacts) {
-      //     console.log(contact.name);
-      //   }
-      // }
-
       for (let contact of this.contacts) {
-        // console.log(contact.name.charAt(0));
         this.firstLetter.push(contact.name.charAt(0));
-
-        for (let i = 0; i < this.firstLetter.length; i++ ) {
-          // if (contact.name.charAt(0) === this.firstLetter[i]) {
-          //   this.groupedNames.push(contact);
-          //   console.log(this.groupedNames);
-          // }
-
-        }
-
-        // console.log(this.firstLetter);
       }
+
+      this.removeDuplicates(this.firstLetter);
+      console.log(this.uniqueArray);
+
+      this.contactCount = this.contacts.length;
 
     });
   }
@@ -49,8 +38,13 @@ export class ContactListComponent implements OnInit {
 
   }
 
-  fillListByChar() {
-
+  removeDuplicates(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      if (this.uniqueArray.indexOf(arr[i]) == -1) {
+        this.uniqueArray.push(arr[i]);
+      }
+    }
+    return this.uniqueArray;
   }
 
 

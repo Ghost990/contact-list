@@ -7,3 +7,20 @@
   font-size: .7em;
   opacity: .6;
 }
+
+.contact-list-item-row {
+  font-size: 1em;
+  min-height: 50px;
+  [class*="col-"] {
+    min-height: 0;
+  }
+  .contact-item-single-row {
+    .contact-name {
+      display: flex;
+      align-items: center;
+    }
+    .contact-image {
+      padding: 0 15px 0 0;
+    }
+  }
+}

@@ -1,43 +1,66 @@
 <app-contact-search></app-contact-search>
 <hr>
 <div class="contact-summary">
-  3 contacts
+  {{ contactCount }} contacts
 </div>
+
 <ul class="contact-list list-unstyled no-gutters">
-  <li *ngFor="let letter of firstLetter" class="list-header">
-    <div class="row">
-      <div class="col-10 offset-2">
-        {{ letter }}
+  <li *ngFor="let letter of uniqueArray">
+    <div>
+      <div class="list-header">
+        <div class="col-10 offset-2">
+          {{ letter }}
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <ul class="list-unstyled">
-          <li *ngFor="let contact of contacts" class="list-item">
-            <span *ngIf="contact.name.charAt(0) === letter">
-              {{ contact.name }}
-            </span>
-          </li>
-        </ul>
+      <div class="row contact-list-item-row no-gutters">
+          <div *ngFor="let contact of contacts" class="col-12 contact-item-single-row">
+            <div *ngIf="contact.name.charAt(0) === letter" class="row no-gutters">
+              <div class="contact-image col-2">
+                <img [src]="contact.picture" alt="{{ contact.name }}">
+              </div>
+              <div class="contact-name col-10">
+                {{ contact.name }}
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </li>
+</ul>
 
-  <!--</li>-->
-  <!--<li class="list-item">-->
-    <!--<app-contact-list-item></app-contact-list-item>-->
-  <!--</li>-->
-  <!--<li class="list-item">-->
-    <!--<app-contact-list-item></app-contact-list-item>-->
-  <!--</li>-->
-  <!--<li class="list-header">-->
-    <!--<div class="row">-->
+
+<!--<ul class="contact-list list-unstyled no-gutters">-->
+  <!--<li *ngFor="let letter of firstLetter">-->
+    <!--<div class="row list-header">-->
       <!--<div class="col-10 offset-2">-->
-        <!--K-->
+        <!--{{ letter }}-->
       <!--</div>-->
     <!--</div>-->
+    <!--<div class="row contact-list-item-row no-gutters">-->
+      <!--<div class="col-12">-->
+        <!--<ul class="list-unstyled">-->
+          <!--<li *ngFor="let contact of contacts" class="list-item">-->
+            <!--<div *ngIf="contact.name.charAt(0) === letter" class="row no-gutters">-->
+              <!--<div class="contact-image col-2">-->
+                <!--<img [src]="contact.picture" alt="{{ contact.name }}">-->
+              <!--</div>-->
+              <!--<div class="contact-name col-10">-->
+                <!--{{ contact.name }}-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div *ngFor="let contact of contacts" class="row contact-list-item-row">&ndash;&gt;-->
+      <!--&lt;!&ndash;<div *ngIf="contact.name.charAt(0) === letter">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="col-2 contact-list-item-image">&ndash;&gt;-->
+          <!--&lt;!&ndash;<img src="http://www.pi-cube.com/wp-content/uploads/2015/04/team-placeholder.jpg" alt="" class="img-fluid">&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="col-10 contact-list-item-name">&ndash;&gt;-->
+          <!--&lt;!&ndash;<p>{{ contact.name }}</p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
   <!--</li>-->
-  <!--<li class="list-item">-->
-    <!--<app-contact-list-item></app-contact-list-item>-->
-  <!--</li>-->
-</ul>
+<!--</ul>-->
