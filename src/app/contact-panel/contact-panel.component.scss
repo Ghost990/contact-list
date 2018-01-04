@@ -1,0 +1,56 @@
+.panel-main-content {
+  background: white;
+  min-height: 500px;
+  padding: 50px;
+  .user-header-details {
+    .user-details-favorite,
+    .user-details-name {
+      border-top: 2px solid #E2E2E2;
+      padding-top: 15px;
+      font-size: 1.2em;
+    }
+    .user-details-image {
+      padding: 0;
+    }
+  }
+  .user-details-content {
+    margin-top: 30px;
+    .user-details-field {
+      padding: 10px 0;
+      border-top: 1px solid #eee;
+      .user-detail-prefix {
+        opacity: .5;
+        font-size: .9em;
+      }
+      .user-detail-suffix {
+        opacity: .3;
+        font-size: .9em;
+      }
+      &:last-of-type {
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+}
+
+.interactions {
+  padding-right: 20px;
+  margin: 0 0 15px 0;
+  .icon {
+    border-right: 1px solid #e2e2e2;
+    img {
+      max-height: 30px;
+      max-width: 30px;
+      display: inline-block;
+    }
+    p {
+      display: inline-block;
+    }
+  }
+  .icon-edit {
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

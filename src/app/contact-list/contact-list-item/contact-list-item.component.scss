@@ -3,7 +3,9 @@ img {
 }
 
 .contact-list-item-row {
-  font-size: 16px;
+  font-size: 1em;
+  height: 50px;
+  border-top: 1px solid #e2e2e2;
   .contact-list-item-name {
     display: flex;
     align-items: center;
