@@ -26,6 +26,21 @@
         opacity: .3;
         font-size: .9em;
       }
+      .user-detail-suffix-withicon {
+        padding-right: 0;
+        .user-details-sendmail-text {
+          display: inline-block;
+          opacity: .3;
+          font-size: .9em;
+        }
+        .user-details-sendmail-icon {
+          opacity: 1 !important;
+          width: 20px;
+          height: 20px;
+          display: inline-block;
+          float: right;
+        }
+      }
       &:last-of-type {
         border-bottom: 1px solid #eee;
       }
