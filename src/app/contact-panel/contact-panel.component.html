@@ -20,7 +20,7 @@
         <img [src]="contact.picture" class="img-fluid" alt="{{ contact.name }}">
       </div>
       <div class="col-1 user-details-favorite">
-        <img src="assets/icons/star.svg" class="img-fluid" alt="">
+        <span class="star-empty"></span>
       </div>
       <div class="col-9 user-details-name">
         {{ contact.name }}
@@ -33,7 +33,9 @@
             Phone
           </div>
           <div class="col-8 user-detail-details">
-            {{ contact.phone }}
+            <a href="tel: {{ contact.phone }}">
+              {{ contact.phone }}
+            </a>
           </div>
           <div class="col-2 user-detail-suffix">
             Home
@@ -44,12 +46,16 @@
             Email
           </div>
           <div class="col-8 user-detail-details">
-            {{ contact.email }}
+            <a href="mailto: {{ contact.email }}">
+              {{ contact.email }}
+            </a>
           </div>
           <div class="col-2 user-detail-suffix-withicon">
             <span class="user-details-sendmail-text">Home</span>
             <span class="user-details-sendmail-icon">
-              <img src="assets/icons/email.svg" alt="" class="img-fluid">
+              <a href="mailto: {{ contact.email }}">
+                <img src="assets/icons/email.svg" alt="" class="img-fluid">
+              </a>
             </span>
           </div>
         </div>

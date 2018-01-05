@@ -7,10 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContactPanelComponent implements OnInit {
   @Input() contact;
+  addedFavorite: boolean;
 
-  constructor() { }
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
 
+  // onClick() {
+  //   this.contact.isFavorite = !this.contact.isFavorite;
+  //   this.addedFavorite = !this.addedFavorite;
+  //   if (this.contact.isFavorite) {
+  //     this.contact.isFavorite = this.addedFavorite;
+  //   }
+  // }
 }
