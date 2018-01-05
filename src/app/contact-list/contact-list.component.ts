@@ -5,7 +5,7 @@
  * from the API, in this case from the /assets/generated.json file.
  **/
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import {SortPipe} from '../sort.pipe'
 
@@ -19,9 +19,8 @@ export class ContactListComponent implements OnInit {
   contacts: any[];
   firstLetter: string[] = [];
   uniqueArray: string[] = [];
-  localContacts = [];
   contactCount: number;
-  letterGroup: string[] = [];
+  @Output() selectedContact = new EventEmitter<void>();
   private url = 'assets/generated.json';
 
 
@@ -29,9 +28,6 @@ export class ContactListComponent implements OnInit {
 
     if (localStorage.getItem('contacts') === null) {
       this.getJsonContacts(http);
-      // this.contacts.sort(function(a, b) {
-      //   return a.name > b.name;
-      // });
     } else {
       this.getLocalContacts();
     }
@@ -86,7 +82,7 @@ export class ContactListComponent implements OnInit {
     /** Iterating through the contacts array and saving the first letter in another one **/
 
     this.contacts = JSON.parse(localStorage['contacts']);
-    //this.contacts.push({_id: 19, name: 'Carol', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
+    //this.contacts.push({_id: 20, name: 'Zsolt', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
     //console.log(this.contacts);
 
@@ -102,11 +98,12 @@ export class ContactListComponent implements OnInit {
      **/
 
     this.removeDuplicates(this.firstLetter);
-    // this.firstLetter.sort(function(a, b) {
-    //   return a > b;
-    // });
 
     this.contactCount = this.contacts.length;
+  }
+
+  onSelect() {
+    this.selectedContact.emit();
   }
 
 

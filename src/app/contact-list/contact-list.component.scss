@@ -1,7 +1,3 @@
-.list-header {
-  font-weight: bold;
-  background: #E6E6E6;
-}
 
 .contact-summary {
   font-size: .7em;
@@ -13,19 +9,4 @@
   overflow-y: scroll;
 }
 
-.contact-list-item-row {
-  font-size: 1em;
-  min-height: 50px;
-  [class*="col-"] {
-    min-height: 0;
-  }
-  .contact-item-single-row {
-    .contact-name {
-      display: flex;
-      align-items: center;
-    }
-    .contact-image {
-      padding: 0 15px 0 0;
-    }
-  }
-}
+

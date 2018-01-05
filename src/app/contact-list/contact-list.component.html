@@ -7,28 +7,17 @@
 <!-- Iterating through the unique letters array, creating a list item (groups) for the letters  -->
 <ul class="contact-list list-unstyled no-gutters">
   <li *ngFor="let letter of uniqueArray  | sort">
-    <div>
-      <div class="list-header">
-        <div class="col-10 offset-2">
-          {{ letter }}
-        </div>
-      </div>
-      <!-- Iterating through the contacts and if the contact name's first character is the
-           same as the group header (the previously outputted letter) then show all the
-           contacts starting with the same letter.
-       -->
-      <div class="row contact-list-item-row no-gutters">
-          <div *ngFor="let contact of contacts | sort" class="col-12 contact-item-single-row">
-            <div *ngIf="contact.name.charAt(0) === letter" class="row no-gutters">
-              <div class="contact-image col-2">
-                <img [src]="contact.picture" alt="{{ contact.name }}">
-              </div>
-              <div class="contact-name col-10">
-                {{ contact.name }}
-              </div>
-            </div>
-          </div>
-      </div>
-    </div>
+    <app-contact-list-header
+    [letter]="letter"
+    >
+    </app-contact-list-header>
+      <ng-container *ngFor="let contact of contacts | sort">
+        <app-contact-list-item
+          *ngIf="contact.name.charAt(0) === letter"
+          [contact]="contact"
+          >
+
+        </app-contact-list-item>
+      </ng-container>
   </li>
 </ul>

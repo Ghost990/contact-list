@@ -12,6 +12,7 @@ import { ContactSearchComponent } from './contact-list/contact-search/contact-se
 import { ContactListItemComponent } from './contact-list/contact-list-item/contact-list-item.component';
 import {HttpModule} from '@angular/http';
 import { SortPipe } from './sort.pipe';
+import { ContactListHeaderComponent } from './contact-list/contact-list-header/contact-list-header.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { SortPipe } from './sort.pipe';
     NewContactComponent,
     ContactSearchComponent,
     ContactListItemComponent,
-    SortPipe
+    SortPipe,
+    ContactListHeaderComponent
   ],
   imports: [
     BrowserModule,
