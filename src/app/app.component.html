@@ -7,14 +7,17 @@
         ></app-contact-list>
       </div>
       <div class="col-7">
+        <app-panel-interactions></app-panel-interactions>
         <app-contact-panel
           *ngIf="clickedContact; else infoText"
           [contact]="clickedContact"
         ></app-contact-panel>
         <ng-template #infoText>
-          <p>
-            Please select a contact!
-          </p>
+          <div class="nothing-selected">
+            <p>
+              Please select a contact!
+            </p>
+          </div>
         </ng-template>
       </div>
     </div>

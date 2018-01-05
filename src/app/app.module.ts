@@ -13,6 +13,7 @@ import { ContactListItemComponent } from './contact-list/contact-list-item/conta
 import {HttpModule} from '@angular/http';
 import { SortPipe } from './sort.pipe';
 import { ContactListHeaderComponent } from './contact-list/contact-list-header/contact-list-header.component';
+import { PanelInteractionsComponent } from './contact-panel/panel-interactions/panel-interactions.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ContactListHeaderComponent } from './contact-list/contact-list-header/c
     ContactSearchComponent,
     ContactListItemComponent,
     SortPipe,
-    ContactListHeaderComponent
+    ContactListHeaderComponent,
+    PanelInteractionsComponent
   ],
   imports: [
     BrowserModule,
