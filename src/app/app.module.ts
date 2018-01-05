@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { OrderModule } from 'ngx-order-pipe';
 
 
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { NewContactComponent } from './contact-panel/new-contact/new-contact.com
 import { ContactSearchComponent } from './contact-list/contact-search/contact-search.component';
 import { ContactListItemComponent } from './contact-list/contact-list-item/contact-list-item.component';
 import {HttpModule} from '@angular/http';
+import { SortPipe } from './sort.pipe';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import {HttpModule} from '@angular/http';
     EditContactComponent,
     NewContactComponent,
     ContactSearchComponent,
-    ContactListItemComponent
+    ContactListItemComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

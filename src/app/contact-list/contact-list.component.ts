@@ -7,11 +7,13 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import {SortPipe} from '../sort.pipe'
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.scss']
+  styleUrls: ['./contact-list.component.scss'],
+  pipes: [SortPipe]
 })
 export class ContactListComponent implements OnInit {
   contacts: any[];
@@ -19,13 +21,17 @@ export class ContactListComponent implements OnInit {
   uniqueArray: string[] = [];
   localContacts = [];
   contactCount: number;
+  letterGroup: string[] = [];
   private url = 'assets/generated.json';
 
 
   constructor(private http: Http) {
 
     if (localStorage.getItem('contacts') === null) {
-      this.getJsonContacts(http: Http);
+      this.getJsonContacts(http);
+      // this.contacts.sort(function(a, b) {
+      //   return a.name > b.name;
+      // });
     } else {
       this.getLocalContacts();
     }
@@ -33,12 +39,14 @@ export class ContactListComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.uniqueArray.sort(function(a, b) {
+      return a > b;
+    });
   }
 
   removeDuplicates(arr) {
     for (let i = 0; i < arr.length; i++) {
-      if (this.uniqueArray.indexOf(arr[i]) == -1) {
+      if (this.uniqueArray.indexOf(arr[i]) === -1) {
         this.uniqueArray.push(arr[i]);
       }
     }
@@ -48,9 +56,9 @@ export class ContactListComponent implements OnInit {
   getJsonContacts(http: Http) {
     http.get(this.url).subscribe(response => {
       this.contacts = response.json();
-      this.contacts.sort(function(a, b) {
-        return a.name > b.name;
-      });
+      // this.contacts.sort(function(a, b) {
+      //   return a.name > b.name;
+      // });
 
 
       /** Iterating through the contacts array and saving the first letter in another one **/
@@ -78,19 +86,25 @@ export class ContactListComponent implements OnInit {
     /** Iterating through the contacts array and saving the first letter in another one **/
 
     this.contacts = JSON.parse(localStorage['contacts']);
-    this.contacts.push({_id: 13, name: 'Zoltan', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
+    //this.contacts.push({_id: 19, name: 'Carol', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
-    console.log(this.contacts);
+    //console.log(this.contacts);
+
+
 
     for (let contact of this.contacts) {
       this.firstLetter.push(contact.name.charAt(0));
     }
+
 
     /** Removing duplicates from the array for every same starting letter
      *  will be grouped under a single letter.
      **/
 
     this.removeDuplicates(this.firstLetter);
+    // this.firstLetter.sort(function(a, b) {
+    //   return a > b;
+    // });
 
     this.contactCount = this.contacts.length;
   }
