@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'scss/variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/reboot";
 
 body {
   background: #efefef;

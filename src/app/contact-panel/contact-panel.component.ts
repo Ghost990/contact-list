@@ -23,4 +23,5 @@ export class ContactPanelComponent implements OnInit {
   //     this.contact.isFavorite = this.addedFavorite;
   //   }
   // }
+
 }

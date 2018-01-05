@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatButton } from '@angular/material';
 
 @Component({
-  selector: 'app-new-contact',
+
   templateUrl: './new-contact.component.html',
   styleUrls: ['./new-contact.component.scss']
 })
-export class NewContactComponent implements OnInit {
+export class NewContactComponent {
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(public thisDialogRef: MatDialogRef<NewContactComponent>, @Inject(MAT_DIALOG_DATA) public data: string) {}
+
+  onCloseConfirm() {
+    this.thisDialogRef.close('Confirm');
+  }
+
+  onCloseCancel() {
+    this.thisDialogRef.close('Cancel');
   }
 
 }

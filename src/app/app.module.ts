@@ -14,6 +14,9 @@ import {HttpModule} from '@angular/http';
 import { SortPipe } from './sort.pipe';
 import { ContactListHeaderComponent } from './contact-list/contact-list-header/contact-list-header.component';
 import { PanelInteractionsComponent } from './contact-panel/panel-interactions/panel-interactions.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -32,8 +35,12 @@ import { PanelInteractionsComponent } from './contact-panel/panel-interactions/p
   imports: [
     BrowserModule,
     HttpModule,
-    OrderModule
+    OrderModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
+  entryComponents: [NewContactComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
