@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContactPanelComponent implements OnInit {
   @Input() contact;
-  //@Input() contactSelected;
 
   constructor() { }
 

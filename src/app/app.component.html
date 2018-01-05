@@ -2,10 +2,20 @@
   <div class="container">
     <div class="row no-gutters">
       <div class="col-5">
-        <app-contact-list></app-contact-list>
+        <app-contact-list
+          (selectedContact)="clickedContact = $event"
+        ></app-contact-list>
       </div>
       <div class="col-7">
-        <app-contact-panel></app-contact-panel>
+        <app-contact-panel
+          *ngIf="clickedContact; else infoText"
+          [contact]="clickedContact"
+        ></app-contact-panel>
+        <ng-template #infoText>
+          <p>
+            Please select a contact!
+          </p>
+        </ng-template>
       </div>
     </div>
   </div>

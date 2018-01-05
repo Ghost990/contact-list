@@ -15,6 +15,7 @@
         <app-contact-list-item
           *ngIf="contact.name.charAt(0) === letter"
           [contact]="contact"
+          (contactSelected)="onContactSelected(contact)"
           >
 
         </app-contact-list-item>

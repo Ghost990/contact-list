@@ -35,9 +35,7 @@ export class ContactListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.uniqueArray.sort(function(a, b) {
-      return a > b;
-    });
+
   }
 
   removeDuplicates(arr) {
@@ -102,8 +100,8 @@ export class ContactListComponent implements OnInit {
     this.contactCount = this.contacts.length;
   }
 
-  onSelect() {
-    this.selectedContact.emit();
+  onContactSelected(contact) {
+    this.selectedContact.emit(contact);
   }
 
 

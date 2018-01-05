@@ -17,13 +17,13 @@
   <div class="col-12 user-info-content">
     <div class="row user-header-details">
       <div class="col-2 user-details-image">
-        <img src="http://www.pi-cube.com/wp-content/uploads/2015/04/team-placeholder.jpg" class="img-fluid" alt="">
+        <img [src]="contact.picture" class="img-fluid" alt="{{ contact.name }}">
       </div>
       <div class="col-1 user-details-favorite">
         <img src="assets/icons/star.svg" class="img-fluid" alt="">
       </div>
       <div class="col-9 user-details-name">
-        User Name
+        {{ contact.name }}
       </div>
     </div>
     <div class="row user-details-content">
@@ -33,7 +33,7 @@
             Phone
           </div>
           <div class="col-8 user-detail-details">
-            (415) 555-1212
+            {{ contact.phone }}
           </div>
           <div class="col-2 user-detail-suffix">
             Home
@@ -44,7 +44,7 @@
             Email
           </div>
           <div class="col-8 user-detail-details">
-            example@gmail.com
+            {{ contact.email }}
           </div>
           <div class="col-2 user-detail-suffix-withicon">
             <span class="user-details-sendmail-text">Home</span>
@@ -58,7 +58,7 @@
             Group
           </div>
           <div class="col-8 user-detail-details">
-            Family
+            {{ contact.company }}
           </div>
         </div>
       </div>
