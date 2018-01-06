@@ -7,6 +7,7 @@
 
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
+import { ManageDataService } from '../manage-data.service';
 
 @Component({
   selector: 'app-contact-list',
@@ -14,21 +15,27 @@ import { Http } from '@angular/http';
   styleUrls: ['./contact-list.component.scss']
 })
 export class ContactListComponent implements OnInit {
-  contacts: any[];
+  contacts: any[] = [];
   firstLetter: string[] = [];
   uniqueArray: string[] = [];
   contactCount: number;
   @Output() selectedContact = new EventEmitter<void>();
-  private url = 'assets/generated.json';
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private _manageDataService: ManageDataService) {
+
+    this.contacts = this._manageDataService.contacts;
+    this.firstLetter = this._manageDataService.firstLetter;
+    this.uniqueArray = this._manageDataService.uniqueArray;
+    this.contactCount = this._manageDataService.contactCount;
+    console.log(this.contacts);
 
     if (localStorage.getItem('contacts') === null) {
-      this.getJsonContacts(http);
+      this._manageDataService.getJsonContacts(http);
     } else {
-      this.getLocalContacts();
+      this._manageDataService.getLocalContacts();
     }
+
 
   }
 
@@ -36,71 +43,10 @@ export class ContactListComponent implements OnInit {
 
   }
 
-  removeDuplicates(arr) {
-    for (let i = 0; i < arr.length; i++) {
-      if (this.uniqueArray.indexOf(arr[i]) === -1) {
-        this.uniqueArray.push(arr[i]);
-      }
-    }
-    return this.uniqueArray;
-  }
-
-  getJsonContacts(http: Http) {
-    http.get(this.url).subscribe(response => {
-      this.contacts = response.json().sort(function(a, b) {
-        return a.name > b.name;
-      });
-
-
-
-      /** Iterating through the contacts array and saving the first letter in another one **/
-
-      for (let contact of this.contacts) {
-        this.firstLetter.push(contact.name.charAt(0));
-      }
-
-      /** Removing duplicates from the array for every same starting letter
-       *  will be grouped under a single letter.
-       **/
-
-      this.removeDuplicates(this.firstLetter);
-
-      this.contactCount = this.contacts.length;
-
-      let JSONContacts = JSON.stringify(this.contacts);
-
-      localStorage.setItem('contacts', JSONContacts);
-
-    });
-  }
-
-  getLocalContacts() {
-    /** Iterating through the contacts array and saving the first letter in another one **/
-
-    this.contacts = JSON.parse(localStorage['contacts']);
-    //this.contacts.push({_id: 20, name: 'Xena', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
-    localStorage.setItem('contacts', JSON.stringify(this.contacts));
-    //console.log(this.contacts);
-
-
-
-    for (let contact of this.contacts) {
-      this.firstLetter.push(contact.name.charAt(0));
-    }
-
-
-    /** Removing duplicates from the array for every same starting letter
-     *  will be grouped under a single letter.
-     **/
-
-    this.removeDuplicates(this.firstLetter);
-
-    this.contactCount = this.contacts.length;
-  }
-
   onContactSelected(contact) {
     this.selectedContact.emit(contact);
   }
+
 
 
 }

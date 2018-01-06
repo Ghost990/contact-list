@@ -21,6 +21,7 @@ import {
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/forms';
+import {ManageDataService} from './manage-data.service';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/
     ReactiveFormsModule
   ],
   entryComponents: [NewContactComponent],
-  providers: [],
+  providers: [ManageDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

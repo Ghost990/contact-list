@@ -6,12 +6,12 @@
 
 <!-- Iterating through the unique letters array, creating a list item (groups) for the letters  -->
 <ul class="contact-list list-unstyled no-gutters">
-  <li *ngFor="let letter of uniqueArray  | sort">
+  <li *ngFor="let letter of uniqueArray">
     <app-contact-list-header
     [letter]="letter"
     >
     </app-contact-list-header>
-      <ng-container *ngFor="let contact of contacts | sort">
+      <ng-container *ngFor="let contact of contacts">
         <app-contact-list-item
           *ngIf="contact.name.charAt(0) === letter"
           [contact]="contact"
