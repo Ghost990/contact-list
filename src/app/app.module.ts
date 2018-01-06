@@ -15,8 +15,12 @@ import { SortPipe } from './sort.pipe';
 import { ContactListHeaderComponent } from './contact-list/contact-list-header/contact-list-header.component';
 import { PanelInteractionsComponent } from './contact-panel/panel-interactions/panel-interactions.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material';
+import {
+  MatButtonModule, MatCheckboxModule, MatError, MatFormFieldControl, MatFormFieldModule, MatInputModule, MatOptionModule,
+  MatSelectModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -38,7 +42,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     OrderModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [NewContactComponent],
   providers: [],

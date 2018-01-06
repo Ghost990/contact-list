@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ViewChild, Input} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {NewContactComponent} from '../new-contact/new-contact.component';
 
@@ -10,6 +10,7 @@ import {NewContactComponent} from '../new-contact/new-contact.component';
 })
 export class PanelInteractionsComponent implements OnInit {
   dialogResult = "";
+  @Input() contacts;
 
 
   constructor(public dialog: MatDialog) { }

@@ -1,15 +1,70 @@
 <div>
   <h2 mat-dialog-title>
-    Dialog
+    Create New Contact
   </h2>
   <mat-dialog-content>
-    Lorem ipsum dolor sit amet
+    <form class="form-new" #newContact="ngForm">
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Contact Name" name="name"
+              #name
+              required
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field>
+            <input type="tel" matInput placeholder="Contact Phone"
+              #phone
+               required
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field>
+            <input type="email" matInput placeholder="Contact Email"
+              #email
+               required
+            >
+
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field>
+            <mat-select placeholder="Select Group" #group>
+              <mat-option value="Family">Family</mat-option>
+              <mat-option value="Friends">Friends</mat-option>
+              <mat-option value="Work">Work</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <button type="button" md-button (click)="imgFileInput.click()">Add a photo</button>
+          <input hidden type="file" #imgFileInput (change)="previewImage($event)"/>
+        </div>
+      </div>
+      <!--<div class="row">-->
+        <!--<div class="col-12">-->
+          <!--<mat-checkbox formControlName="isFavorite">Add the new Contact to Favorites!</mat-checkbox>-->
+        <!--</div>-->
+      <!--</div>-->
+    </form>
   </mat-dialog-content>
+  <pre>{{ group.value | json }}</pre>
   <br>
   <br>
   <strong>{{ data }}</strong>
   <mat-dialog-actions>
-    <button mat-raised-button mat-dialog-close>Add New Contact</button>
+    <button mat-raised-button mat-dialog-close (click)="onSubmit(name.value, phone.value, email.value, group.value)">Add New Contact</button>
     <!-- Can optionally provide a result for the closing dialog. -->
     <button mat-raised-button [mat-dialog-close]="true">Cancel</button>
   </mat-dialog-actions>
