@@ -46,22 +46,8 @@
           </mat-form-field>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12">
-          <button type="button" md-button (click)="imgFileInput.click()">Add a photo</button>
-          <input hidden type="file" #imgFileInput (change)="previewImage($event)"/>
-        </div>
-      </div>
-      <!--<div class="row">-->
-        <!--<div class="col-12">-->
-          <!--<mat-checkbox formControlName="isFavorite">Add the new Contact to Favorites!</mat-checkbox>-->
-        <!--</div>-->
-      <!--</div>-->
     </form>
   </mat-dialog-content>
-  <pre>{{ group.value | json }}</pre>
-  <br>
-  <br>
   <strong>{{ data }}</strong>
   <mat-dialog-actions>
     <button mat-raised-button mat-dialog-close (click)="onSubmit(name.value, phone.value, email.value, group.value)">Add New Contact</button>
