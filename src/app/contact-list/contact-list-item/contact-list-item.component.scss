@@ -28,3 +28,9 @@ a {
     text-decoration: none;
   }
 }
+
+:host.active {
+  .contact-list-item-row {
+    background: $selected;
+  }
+}

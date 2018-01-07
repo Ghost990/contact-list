@@ -11,6 +11,7 @@ export class EditContactComponent implements OnInit {
   @Input() showEdit;
   @Output() clickOnEdit = new EventEmitter<void>();
   @Input() thisSelectedContact;
+  uniqueGroup = [];
   findIndexOfKey;
   single;
   newItem;
@@ -72,13 +73,15 @@ export class EditContactComponent implements OnInit {
   }
 
 
-  onContactUpdate(id: string, name: string, phone: string, email: string) {
+  onContactUpdate(id: string, name: string, phone: string, email: string, group: string, picture: string) {
 
     this.newItem = {
       '_id': id,
       'name': name,
       'phone': phone,
-      'email': email
+      'email': email,
+      'group': group,
+      'picture': picture
 
     };
 
@@ -92,6 +95,7 @@ export class EditContactComponent implements OnInit {
     //this.contacts.push(this.newItem);
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
+
 
 
 }

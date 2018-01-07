@@ -19,6 +19,7 @@ export class ContactListComponent implements OnInit {
   firstLetter: string[] = [];
   uniqueArray: string[] = [];
   contactCount: number;
+  selected: any;
   @Output() selectedContact = new EventEmitter<void>();
   private url = 'assets/generated.json';
 
@@ -107,6 +108,14 @@ export class ContactListComponent implements OnInit {
   pushC() {
     this.contacts.push({_id: 20, name: 'Alex', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'n', phone: 'n', isFavorite: false, company: 'google'});
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
+  }
+
+  select(item) {
+    this.selected = item;
+  }
+
+  isActive(item) {
+    return this.selected === item;
   }
 
 
