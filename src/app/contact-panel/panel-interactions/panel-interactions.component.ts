@@ -11,6 +11,8 @@ import {NewContactComponent} from '../new-contact/new-contact.component';
 export class PanelInteractionsComponent implements OnInit {
   dialogResult = "";
   @Input() contacts;
+  @Output() editClicked = new EventEmitter<void>();
+
 
 
   constructor(public dialog: MatDialog) { }
@@ -28,6 +30,10 @@ export class PanelInteractionsComponent implements OnInit {
       console.log(`Dialog closed: ${result}`);
       this.dialogResult = result;
     });
+  }
+
+  editOnClick() {
+    this.editClicked.emit();
   }
 
 

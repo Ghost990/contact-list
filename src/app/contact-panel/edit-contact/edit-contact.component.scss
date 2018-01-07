@@ -1,0 +1,77 @@
+@import '../../../scss/variables';
+
+.panel-main-content {
+  background: white;
+  min-height: 600px;
+  padding: 50px;
+  .user-header-details {
+    .user-details-favorite,
+    .user-details-name {
+      border-top: 2px solid #E2E2E2;
+      padding-top: 15px;
+      font-size: 1.2em;
+      .star-empty {
+        width: 25px;
+        height: 25px;
+        background-image: url('/assets/icons/star.svg');
+        background-size: 25px 25px;
+        display: block;
+      }
+      .star-full {
+        width: 25px;
+        height: 25px;
+        background-image: url('/assets/icons/favourite-symbol.svg');
+        background-size: 25px 25px;
+        display: block;
+      }
+    }
+    .user-details-image {
+      padding: 0;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .user-details-content {
+    margin-top: 30px;
+    .user-details-field {
+      padding: 10px 0;
+      border-top: 1px solid #eee;
+      a {
+        color: black;
+        @include transition(transition, 0.5s);
+        &:hover {
+          text-decoration: none;
+          opacity: .6;
+        }
+      }
+      .user-detail-prefix {
+        opacity: .5;
+        font-size: .9em;
+      }
+      .user-detail-suffix {
+        opacity: .3;
+        font-size: .9em;
+      }
+      .user-detail-suffix-withicon {
+        padding-right: 0;
+        .user-details-sendmail-text {
+          display: inline-block;
+          opacity: .3;
+          font-size: .9em;
+        }
+        .user-details-sendmail-icon {
+          opacity: 1 !important;
+          width: 20px;
+          height: 20px;
+          display: inline-block;
+          float: right;
+        }
+      }
+      &:last-of-type {
+        border-bottom: 1px solid #eee;
+      }
+    }
+  }
+}
+

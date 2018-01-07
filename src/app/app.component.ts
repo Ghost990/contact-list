@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   clickedContact;
+  showEdit :boolean;
+
+  // editOnClick() {
+  //   this.showEdit = !this.showEdit;
+  //   console.log('clicked' + ' ' + this.showEdit);
+  // }
+
 }

@@ -1,5 +1,7 @@
-
-<div class="row panel-main-content">
+<app-panel-interactions
+  (editClicked)="editOnClick()"
+></app-panel-interactions>
+<div class="row panel-main-content" *ngIf="!showEdit">
   <div class="col-12 user-info-content">
     <div class="row user-header-details">
       <div class="col-2 user-details-image">
@@ -57,3 +59,9 @@
     </div>
   </div>
 </div>
+<hr>
+<app-edit-contact
+  *ngIf="showEdit"
+  (editClicked)="showEditPanel()"
+  [contact]="contact"
+></app-edit-contact>

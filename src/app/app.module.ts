@@ -16,12 +16,13 @@ import { ContactListHeaderComponent } from './contact-list/contact-list-header/c
 import { PanelInteractionsComponent } from './contact-panel/panel-interactions/panel-interactions.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {
+  MatAutocomplete, MatAutocompleteModule,
   MatButtonModule, MatCheckboxModule, MatError, MatFormFieldControl, MatFormFieldModule, MatInputModule, MatOptionModule,
   MatSelectModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/forms';
-import {ManageDataService} from './manage-data.service';
+import {Ng2Webstorage} from 'ngx-webstorage';
 
 
 @NgModule({
@@ -50,10 +51,12 @@ import {ManageDataService} from './manage-data.service';
     MatCheckboxModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    Ng2Webstorage
   ],
   entryComponents: [NewContactComponent],
-  providers: [ManageDataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

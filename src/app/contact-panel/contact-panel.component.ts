@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-contact-panel',
@@ -7,7 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ContactPanelComponent implements OnInit {
   @Input() contact;
+  @Output() selectedContact = new EventEmitter<void>();
+  @Input() thisContact;
+
+  clickedContact;
   addedFavorite: boolean;
+  //@Input() showEdit;
+  showEdit :boolean;
 
   constructor() {
 
@@ -23,5 +29,16 @@ export class ContactPanelComponent implements OnInit {
   //     this.contact.isFavorite = this.addedFavorite;
   //   }
   // }
+
+  showEditPanel() {
+    //this.showEdit = !this.showEdit;
+    console.log('clicked');
+  }
+
+  editOnClick(contact) {
+    this.selectedContact.emit(contact);
+    this.showEdit = !this.showEdit;
+    //console.log('clicked' + ' ' + this.showEdit);
+  }
 
 }

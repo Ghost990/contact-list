@@ -1,3 +1,63 @@
-<p>
-  edit-contact works!
-</p>
+<div class="row panel-main-content" *ngIf="!showEdit">
+  <form class="col-12 user-info-content">
+    <div class="row user-header-details">
+      <div class="col-2 user-details-image">
+        <img [src]="contact.picture" class="img-fluid" alt="{{ contact.name }}">
+      </div>
+      <div class="col-1 user-details-favorite">
+        <span class="star-empty"></span>
+      </div>
+      <div class="col-9 user-details-name">
+        <input type="text" value="{{ contact.name }}" #name name="name">
+        <input type="text" value="{{ contact._id }}" #singleId>
+      </div>
+    </div>
+    <div class="row user-details-content">
+      <div class="col-12">
+        <div class="row user-details-field">
+          <div class="col-2 user-detail-prefix">
+            Phone
+          </div>
+          <div class="col-8 user-detail-details">
+            <input type="text" value="{{ contact.phone }}" #phone name="phone">
+          </div>
+          <div class="col-2 user-detail-suffix">
+            Home
+          </div>
+        </div>
+        <div class="row user-details-field">
+          <div class="col-2 user-detail-prefix">
+            Email
+          </div>
+          <div class="col-8 user-detail-details">
+            <input type="text" value="{{ contact.email }}" #email name="email">
+          </div>
+          <div class="col-2 user-detail-suffix-withicon">
+            <span class="user-details-sendmail-text">Home</span>
+            <span class="user-details-sendmail-icon">
+              <a href="mailto: {{ contact.email }}">
+                <img src="assets/icons/email.svg" alt="" class="img-fluid">
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="row user-details-field">
+          <div class="col-2 user-detail-prefix">
+            Group
+          </div>
+          <div class="col-8 user-detail-details">
+            {{ contact.company }}
+          </div>
+        </div>
+        <div>
+          {{ singleId.value }}
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button mat-raised-button (click)="onContactUpdate(singleId.value, name.value, phone.value, email.value)">Update Contact</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
