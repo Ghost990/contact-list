@@ -18,7 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import {
   MatAutocomplete, MatAutocompleteModule,
   MatButtonModule, MatCheckboxModule, MatError, MatFormFieldControl, MatFormFieldModule, MatInputModule, MatOptionModule,
-  MatSelectModule
+  MatSelectModule, MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/forms';
@@ -49,6 +49,8 @@ import {Ng2Webstorage} from 'ngx-webstorage';
     MatSelectModule,
     MatOptionModule,
     MatCheckboxModule,
+    MatTooltipModule,
+    MatSnackBarModule,
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,

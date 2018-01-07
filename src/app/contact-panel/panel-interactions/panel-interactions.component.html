@@ -4,15 +4,19 @@
       <div class="row">
         <div class="col-2 icon icon-new offset-9">
           <a
-            href="#"
             (click)="openDialog()"
-
+            matTooltip="Create a new Contact!"
+            style="cursor:pointer;"
           >
             <img src="assets/icons/folder.svg" class="img-fluid" alt="">
             <p>New</p>
           </a>
         </div>
-        <a href="" (click)="editOnClick()">
+        <a (click)="editOnClick()"
+           matTooltip="Edit Contact!"
+           style="cursor:pointer;"
+
+        >
           <div class="col-1 icon icon-edit">
             <a href="#">
               <img src="assets/icons/pencil-striped-symbol-for-interface-edit-buttons.svg" class="img-fluid" alt="">
