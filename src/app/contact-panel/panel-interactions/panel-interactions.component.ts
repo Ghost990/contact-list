@@ -14,7 +14,6 @@ export class PanelInteractionsComponent implements OnInit {
   @Output() editClicked = new EventEmitter<void>();
 
 
-
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
