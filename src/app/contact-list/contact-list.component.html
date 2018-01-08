@@ -1,17 +1,29 @@
-<app-contact-search></app-contact-search>
+<div class="row">
+  <div class="col-10 offset-1">
+    <form class="search-form" [formGroup]="stateForm" novalidate>
+      <mat-form-field class="search-field">
+        <span matPrefix class="prefix" style="margin: 0 10px 10px 0;">
+          <img src="assets/icons/searching-magnifying-glass.svg" class="img-fluid" alt="Search">
+        </span>
+        <input (keyup)="getSearchValue()" #searchContact [(ngModel)]="queryString" type="tel" matInput placeholder="Search Contacts" formControlName="search">
+      </mat-form-field>
+    </form>
+  </div>
+</div>
 <hr>
 <div class="contact-summary">
   {{ contactCount }} contacts
 </div>
 
 <!-- Iterating through the unique letters array, creating a list item (groups) for the letters  -->
-<ul class="contact-list list-unstyled no-gutters" [@listAnimation]="uniqueArray.length">
+<ul class="contact-list list-unstyled no-gutters" [@listAnimation]="contacts.length">
   <li *ngFor="let letter of uniqueArray | sort">
     <app-contact-list-header
     [letter]="letter"
+    *ngIf="!isSearching"
     >
     </app-contact-list-header>
-      <ng-container *ngFor="let contact of contacts | sort">
+      <ng-container *ngFor="let contact of contacts | sort| searchFilter: queryString">
         <app-contact-list-item
           *ngIf="contact.name.charAt(0) === letter"
           (click)="select(contact)" [ngClass]="{active: isActive(contact)}"

@@ -5,13 +5,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchFilterPipe implements PipeTransform {
 
-  transform(value: any, search: string): any {
-    if (!search) {return value;}
-    let solution = value.filter(v => {
-      if (!v) {return}
-      return v.toLowerCase().indexOf(search.toLowerCase()) !== -1;
-    })
-    return solution;
+  transform(value: any, input: string) {
+    if (input) {
+      input = input.toLowerCase();
+      return value.filter(function (el: any) {
+          return el.name.toLowerCase().indexOf(input) > -1;
+      });
+    }
+    return value;
   }
 
 }

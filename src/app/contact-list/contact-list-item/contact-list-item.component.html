@@ -1,6 +1,6 @@
 <a
   href="#"
-  (click)="onSelected()" @itemAnimation>
+  (click)="onSelected()" [@fadeIn]="show">
   <div class="row contact-list-item-row no-gutters" >
     <div class="contact-image col-2">
       <img [src]="contact.picture" alt="{{ contact.name }}">

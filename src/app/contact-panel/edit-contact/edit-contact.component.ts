@@ -18,7 +18,7 @@ export class EditContactComponent implements OnInit {
 
   @ViewChild('singleId') input: ElementRef;
 
-  @LocalStorage()
+  @LocalStorage();
   constructor(public snackBar: MatSnackBar, private localSt: LocalStorageService) {
 
     this.contacts = this.localSt.retrieve('contacts');

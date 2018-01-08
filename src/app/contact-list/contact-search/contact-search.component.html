@@ -22,7 +22,7 @@
         <span matPrefix class="prefix" style="margin: 0 10px 10px 0;">
           <img src="assets/icons/searching-magnifying-glass.svg" class="img-fluid" alt="Search">
         </span>
-        <input type="tel" matInput placeholder="Search Contacts" formControlName="search">
+        <input [(ngModel)]="searchText" type="tel" matInput placeholder="Search Contacts" formControlName="search">
       </mat-form-field>
     </form>
   </div>

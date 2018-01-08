@@ -6,7 +6,7 @@ import {animate, animateChild, keyframes, query, stagger, style, transition, tri
   templateUrl: './contact-list-item.component.html',
   styleUrls: ['./contact-list-item.component.scss'],
   animations: [
-    trigger('itemAnimation', [
+    trigger('fadeIn', [
       transition(':enter', [
         animate('1s ease-in', keyframes([
           style({opacity: 0, transform: 'translateY(-75px)', offset: 0}),

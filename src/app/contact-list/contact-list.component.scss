@@ -8,3 +8,44 @@
   max-height: 550px;
   overflow-y: scroll;
 }
+
+.search-contacts-row {
+  margin: 10px 0;
+  .input-group {
+    border-bottom: 2px solid #ccc;
+    width: 80%;
+    .search-field {
+      border: none;
+      background: none;
+      width: 70%;
+      padding: 10px 5px;
+      &:focus {
+        border: none;
+        outline: none;
+      }
+    }
+
+    .input-group-prefix {
+      background: none;
+      border: none;
+      img {
+        max-height: 25px;
+      }
+    }
+  }
+}
+
+
+mat-form-field {
+  width: 100%;
+  .prefix {
+    img {
+      max-height: 20px;
+    }
+  }
+}
+
+
+
+
+

@@ -5,11 +5,13 @@
  * from the API, in this case from the /assets/generated.json file.
  **/
 
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import { trigger, style, transition, animate, keyframes, query, stagger, animateChild } from '@angular/animations';
+import { SearchFilterPipe } from '../search-filter.pipe';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-contact-list',
@@ -38,8 +40,11 @@ export class ContactListComponent implements OnInit {
   contactCount: number;
   selected: any;
   stateForm: FormGroup;
+  isSearching= false;
   @Output() selectedContact = new EventEmitter<void>();
   private url = 'assets/generated.json';
+
+  @ViewChild('searchContact') searchInput: ElementRef;
 
 
   constructor(private http: Http, private fb: FormBuilder, private localSt: LocalStorageService) {
@@ -147,7 +152,11 @@ export class ContactListComponent implements OnInit {
   }
 
   getSearchValue() {
-    return this.stateForm.value.search;
+    if (this.searchInput.nativeElement.value.length > 0) {
+      this.isSearching = true;
+    } else {
+      this.isSearching = false;
+    }
   }
 
 
