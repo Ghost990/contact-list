@@ -17,12 +17,14 @@ import { PanelInteractionsComponent } from './contact-panel/panel-interactions/p
 import { MatDialogModule } from '@angular/material/dialog';
 import {
   MatAutocomplete, MatAutocompleteModule,
-  MatButtonModule, MatCheckboxModule, MatError, MatFormFieldControl, MatFormFieldModule, MatInputModule, MatOptionModule,
+  MatButtonModule, MatCheckboxModule, MatError, MatFormFieldControl, MatFormFieldModule, MatIconModule, MatInputModule, MatOptionModule,
   MatSelectModule, MatSnackBarModule, MatTooltipModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/forms';
 import {Ng2Webstorage} from 'ngx-webstorage';
+import { SearchFilterPipe } from './search-filter.pipe';
+import {AsyncLocalStorageModule} from 'angular-async-local-storage';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import {Ng2Webstorage} from 'ngx-webstorage';
     ContactListItemComponent,
     SortPipe,
     ContactListHeaderComponent,
-    PanelInteractionsComponent
+    PanelInteractionsComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -52,10 +55,12 @@ import {Ng2Webstorage} from 'ngx-webstorage';
     MatTooltipModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    Ng2Webstorage
+    Ng2Webstorage,
+    AsyncLocalStorageModule
   ],
   entryComponents: [NewContactComponent],
   providers: [],

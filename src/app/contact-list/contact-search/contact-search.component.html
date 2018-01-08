@@ -4,13 +4,26 @@
   <!--</div>-->
 <!--</div>-->
 
-<div class="row search-contacts-row mx-auto">
-  <div class="input-group mx-auto">
-    <div class="input-group-prepend">
-      <span class="input-group-text input-group-prefix">
-        <img src="assets/icons/searching-magnifying-glass.svg" class="img-fluid" alt="Search">
-      </span>
-    </div>
-    <input type="text" class="form-control search-field" placeholder="Find contacts" id="searchContact" aria-label="Username" aria-describedby="basic-addon1">
+<!--<div class="row search-contacts-row mx-auto">-->
+  <!--<div class="input-group mx-auto">-->
+    <!--<div class="input-group-prepend">-->
+      <!--<span class="input-group-text input-group-prefix">-->
+        <!--<img src="assets/icons/searching-magnifying-glass.svg" class="img-fluid" alt="Search">-->
+      <!--</span>-->
+    <!--</div>-->
+    <!--<input type="text" class="form-control search-field" placeholder="Find contacts" id="searchContact" aria-label="Username" aria-describedby="basic-addon1">-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="col-10 offset-1">
+    <form class="search-form" [formGroup]="stateForm" novalidate>
+      <mat-form-field class="search-field">
+        <span matPrefix class="prefix" style="margin: 0 10px 10px 0;">
+          <img src="assets/icons/searching-magnifying-glass.svg" class="img-fluid" alt="Search">
+        </span>
+        <input type="tel" matInput placeholder="Search Contacts" formControlName="search">
+      </mat-form-field>
+    </form>
   </div>
 </div>

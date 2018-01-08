@@ -7,6 +7,7 @@
 
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
+import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 
 @Component({
@@ -20,22 +21,30 @@ export class ContactListComponent implements OnInit {
   uniqueArray: string[] = [];
   contactCount: number;
   selected: any;
+  stateForm: FormGroup;
   @Output() selectedContact = new EventEmitter<void>();
   private url = 'assets/generated.json';
 
 
-  constructor(private http: Http, private localSt: LocalStorageService) {
+  constructor(private http: Http, private fb: FormBuilder, private localSt: LocalStorageService) {
 
-    if (localStorage.getItem('contacts') === null) {
-      this.getJsonContacts(http);
-    } else {
-      this.getLocalContacts();
-    }
+    // if (localStorage.getItem('contacts') === null) {
+    //   this.getJsonContacts(http);
+    // } else {
+    //   this.getLocalContacts();
+    // }
+
+    //this.getJsonContacts(http);
+    this.getLocalContacts();
+
+    this.stateForm = new FormGroup({
+      search: new FormControl()
+    });
 
   }
 
   ngOnInit() {
-    this.localSt.observe('key')
+    this.localSt.observe('contact')
       .subscribe((value) => console.log('new value', value));
   }
 
@@ -72,7 +81,10 @@ export class ContactListComponent implements OnInit {
 
       let JSONContacts = JSON.stringify(this.contacts);
 
-      localStorage.setItem('contacts', JSONContacts);
+      this.localSt.store('contacts', this.contacts);
+      //localStorage.setItem('contacts', JSONContacts);
+
+
 
     });
   }
@@ -80,11 +92,11 @@ export class ContactListComponent implements OnInit {
   getLocalContacts() {
     /** Iterating through the contacts array and saving the first letter in another one **/
 
-    this.contacts = JSON.parse(localStorage['contacts']);
+    //this.contacts = JSON.parse(this.localSt.retrieve('contacts'));
+    this.contacts = this.localSt.retrieve('contacts');
     //this.contacts.push({_id: 20, name: 'Xena', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
-    localStorage.setItem('contacts', JSON.stringify(this.contacts));
+    //localStorage.setItem('contacts', JSON.stringify(this.contacts));
     //console.log(this.contacts);
-
 
 
     for (let contact of this.contacts) {
@@ -116,6 +128,10 @@ export class ContactListComponent implements OnInit {
 
   isActive(item) {
     return this.selected === item;
+  }
+
+  getSearchValue() {
+    return this.stateForm.value.search;
   }
 
 
