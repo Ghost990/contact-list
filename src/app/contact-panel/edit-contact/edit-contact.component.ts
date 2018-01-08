@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-contact',
@@ -11,30 +12,13 @@ export class EditContactComponent implements OnInit {
   @Input() showEdit;
   @Output() clickOnEdit = new EventEmitter<void>();
   @Input() thisSelectedContact;
-  uniqueGroup = [];
-  findIndexOfKey;
-  single;
   newItem;
-  thisItemIndex;
 
   @ViewChild('singleId') input: ElementRef;
 
-  constructor() {
+  constructor(public snackBar: MatSnackBar) {
 
     this.contacts = JSON.parse(localStorage['contacts']);
-
-    // this.contacts = JSON.parse(localStorage['contacts']);
-    // console.log(this.contacts);
-    //
-    // this.single = this.contacts.find(item => item._id === '5a4d1dac1fa45abdcd277f49');
-    // console.log(this.single);
-
-    // for (let i = 0; i < localStorage.length; i++) {
-    //   let key = JSON.parse(localStorage['contacts'])[i]._id;
-    //   console.log(key);
-    // }
-
-
 
   }
 
@@ -42,36 +26,9 @@ export class EditContactComponent implements OnInit {
 
   }
 
-  ngAfterViewInit() {
-
-    //let thisItemIndex = this.contacts.findIndex(el => el._id === this.input.nativeElement.value);
-
-
-    //console.log(this.input.nativeElement.value);
+  closeSnackBar() {
+    return this.snackBar.dismiss();
   }
-
-  onClickOnEdit() {
-    this.clickOnEdit.emit();
-  }
-
-
-
-
-  findIndexToUpdate(newItem) {
-    return newItem.id === this;
-  }
-
-  showUpdatedItems(newItem) {
-    let updateItem = this.contacts.find(this.findIndexToUpdate, newItem.id);
-    let index = this.contacts.indexOf(updateItem);
-
-    console.log(JSON.stringify(updateItem));
-    console.log(JSON.stringify(index));
-    console.log(JSON.stringify(this.contacts));
-
-    this.contacts[index] = newItem;
-  }
-
 
   onContactUpdate(id: string, name: string, phone: string, email: string, group: string, picture: string) {
 
@@ -80,20 +37,20 @@ export class EditContactComponent implements OnInit {
       'name': name,
       'phone': phone,
       'email': email,
-      'group': group,
+      'company': group,
       'picture': picture
 
     };
 
     let index = this.contacts.findIndex(el => el._id === this.input.nativeElement.value);
 
-    //this.contacts = JSON.parse(localStorage['contacts']);
-    //this.showUpdatedItems(this.newItem);
+    this.contacts = JSON.parse(localStorage['contacts']);
 
     this.contacts[index] = this.newItem;
-
-    //this.contacts.push(this.newItem);
     localStorage.setItem('contacts', JSON.stringify(this.contacts));
+
+    this.snackBar.open(`${name} is edited!`, 'Got it!');
+    setTimeout(() => { this.closeSnackBar() }, 5000);
   }
 
 

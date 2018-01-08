@@ -41,12 +41,15 @@
             Group
           </div>
           <div class="col-8 user-detail-details">
-            {{ contact.company }}
+            <input type="text" value="{{ contact.company }}" #group name="group">
           </div>
+        </div>
+        <div>
+          {{ group.value }}
         </div>
         <div class="row">
           <div class="col-12 align-content-center">
-            <button class="update-contact" mat-raised-button (click)="onContactUpdate(singleId.value, name.value, phone.value, email.value, picture.src)">Update Contact</button>
+            <button class="update-contact" mat-raised-button (click)="onContactUpdate(singleId.value, name.value, phone.value, email.value, group.value, picture.src)">Update Contact</button>
           </div>
         </div>
       </div>

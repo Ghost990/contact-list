@@ -1,7 +1,5 @@
 import { Component, OnInit, Inject, EventEmitter, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatButton, MatFormFieldModule, MatSelect } from '@angular/material';
-import {NgForm, NgModel, FormGroup} from '@angular/forms';
-import { UploadOutput, UploadInput, UploadFile, humanizeBytes, UploaderOptions } from 'ngx-uploader';
 import { ContactListComponent } from '../../contact-list/contact-list.component';
 import { MatSnackBar } from '@angular/material';
 
