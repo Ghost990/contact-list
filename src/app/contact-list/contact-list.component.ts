@@ -9,11 +9,27 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
 import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import { trigger, style, transition, animate, keyframes, query, stagger, animateChild } from '@angular/animations';
 
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
-  styleUrls: ['./contact-list.component.scss']
+  styleUrls: ['./contact-list.component.scss'],
+  animations: [
+    trigger('listAnimation', [
+      transition('* -> *', [
+        query(':enter', style({ opacity: 0 }), {optional: true}),
+        query(':enter', stagger('100ms', [
+          animate('1s ease-in', keyframes([
+            style({opacity: 0, transform: 'translateY(-75px)', offset: 0}),
+            style({opacity: .5, transform: 'translateY(35px)', offset: 0.3}),
+            style({opacity: 1, transform: 'translateY(0)', offset: 1}),
+          ]))
+        ]), {optional: true})
+      ])
+    ])
+  ]
+
 })
 export class ContactListComponent implements OnInit {
   contacts: any[];
@@ -28,14 +44,12 @@ export class ContactListComponent implements OnInit {
 
   constructor(private http: Http, private fb: FormBuilder, private localSt: LocalStorageService) {
 
-    // if (localStorage.getItem('contacts') === null) {
-    //   this.getJsonContacts(http);
-    // } else {
-    //   this.getLocalContacts();
-    // }
+    if (this.localSt.retrieve('contacts') === null) {
+      this.getJsonContacts(http);
+    } else {
+      this.getLocalContacts();
+    }
 
-    //this.getJsonContacts(http);
-    this.getLocalContacts();
 
     this.stateForm = new FormGroup({
       search: new FormControl()
@@ -56,6 +70,8 @@ export class ContactListComponent implements OnInit {
     }
     return this.uniqueArray;
   }
+
+
 
   getJsonContacts(http: Http) {
     http.get(this.url).subscribe(response => {

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 import { MatSnackBar } from '@angular/material';
 import {LocalStorage, LocalStorageService, SessionStorage} from 'ngx-webstorage';
 
+
 @Component({
   selector: 'app-edit-contact',
   templateUrl: './edit-contact.component.html',
@@ -41,7 +42,6 @@ export class EditContactComponent implements OnInit {
       'email': email,
       'company': group,
       'picture': picture
-
     };
 
     let index = this.contacts.findIndex(el => el._id === this.input.nativeElement.value);

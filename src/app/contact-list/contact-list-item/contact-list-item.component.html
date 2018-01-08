@@ -1,7 +1,7 @@
 <a
   href="#"
-  (click)="onSelected()">
-  <div class="row contact-list-item-row no-gutters">
+  (click)="onSelected()" @itemAnimation>
+  <div class="row contact-list-item-row no-gutters" >
     <div class="contact-image col-2">
       <img [src]="contact.picture" alt="{{ contact.name }}">
     </div>
