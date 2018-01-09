@@ -5,10 +5,13 @@
  * from the API, in this case from the /assets/generated.json file.
  **/
 
-import {Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, IterableDiffers, DoCheck, OnChanges} from '@angular/core';
+import {
+  Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, IterableDiffers, DoCheck, OnChanges,
+  AfterContentInit
+} from '@angular/core';
 import { Http } from '@angular/http';
 import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
-import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import {LocalStorage, LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import { trigger, style, transition, animate, keyframes, query, stagger, animateChild } from '@angular/animations';
 import { SearchFilterPipe } from '../search-filter.pipe';
 import { NgModule } from '@angular/core';
@@ -33,19 +36,22 @@ import { NgModule } from '@angular/core';
   ]
 
 })
-export class ContactListComponent implements OnInit, DoCheck, OnChanges {
-  contacts: any[];
-  firstLetter: string[] = [];
+export class ContactListComponent implements OnInit {
+  @LocalStorage('contacts') contacts: any[];
+  @LocalStorage('letters') firstLetter: string[] = [];
   uniqueArray: string[] = [];
   contactCount: number;
   selected: any;
   stateForm: FormGroup;
   isSearching= false;
   differ: any;
+  haveChildren: boolean;
   @Output() selectedContact = new EventEmitter<void>();
+  alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
   private url = 'assets/generated.json';
 
   @ViewChild('searchContact') searchInput: ElementRef;
+  @ViewChild('contactListHeader') contactHeader: ElementRef;
 
 
   constructor(public differs: IterableDiffers, private http: Http, private fb: FormBuilder, private localSt: LocalStorageService) {
@@ -62,6 +68,7 @@ export class ContactListComponent implements OnInit, DoCheck, OnChanges {
       search: new FormControl()
     });
 
+
   }
 
   // ngDoCheck() {
@@ -70,7 +77,7 @@ export class ContactListComponent implements OnInit, DoCheck, OnChanges {
   //
   //   // here you can do what you want on array change
   //   // you can check for forEachAddedItem or forEachRemovedItem on change object to see the added/removed items
-  //   // Attention: ngDoCheck() is triggered at each binded variable on componenet; if you have more than one
+  //   // Attention: ngDoCheck() is triggered at each binded letiable on componenet; if you have more than one
   //   // in your component, make sure you filter here the one you want.
   // }
   //
@@ -79,9 +86,10 @@ export class ContactListComponent implements OnInit, DoCheck, OnChanges {
   //
   // }
 
+
   ngOnInit() {
     this.localSt.observe('contact')
-      .subscribe((value) => console.log('new value', value));
+      .subscribe((value) => this.contacts = this.localSt.retrieve('contacts'));
   }
 
   removeDuplicates(arr) {
@@ -167,6 +175,7 @@ export class ContactListComponent implements OnInit, DoCheck, OnChanges {
   isActive(item) {
     return this.selected === item;
   }
+
 
   getSearchValue() {
     if (this.searchInput.nativeElement.value.length > 0) {

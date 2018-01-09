@@ -16,21 +16,39 @@
 </div>
 
 <!-- Iterating through the unique letters array, creating a list item (groups) for the letters  -->
-<ul class="contact-list list-unstyled no-gutters" [@listAnimation]="contacts">
-  <li *ngFor="let letter of uniqueArray | sort">
-    <app-contact-list-header
-    [letter]="letter"
-    *ngIf="!isSearching"
+<ul id="contactRow" class="contact-list list-unstyled no-gutters" [@listAnimation]="contacts">
+  <li
+    *ngFor="let letter of alphabet | unique"
     >
-    </app-contact-list-header>
-      <ng-container *ngFor="let contact of contacts | sort| searchFilter: queryString">
+    <div class="elements">
+
+      <ng-container *ngFor="let contact of contacts | searchFilter: queryString">
+        <div class="list-header" *ngIf="letter === contact.name.charAt(0)">
+          <div class="col-10 offset-2">
+            {{ letter | unique }}
+          </div>
+        </div>
         <app-contact-list-item
           *ngIf="contact.name.charAt(0) === letter"
+          [class.haveItem]="contact.name.charAt(0) === letter"
           (click)="select(contact)" [ngClass]="{active: isActive(contact)}"
           [contact]="contact"
           (contactSelected)="onContactSelected(contact)"
-          >
+          class="single-contact-item-component"
+
+        >
         </app-contact-list-item>
       </ng-container>
+    </div>
   </li>
 </ul>
+
+
+<!--<div *ngFor="let letter of alphabet | letterFilter: contacts letter">-->
+  <!--{{ letter }}-->
+  <!--<div *ngFor="let contact of contacts">-->
+    <!--<div *ngIf="contact.name.charAt(0) === letter">-->
+      <!--{{ contact.name }}-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->

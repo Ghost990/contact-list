@@ -25,6 +25,8 @@ import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/
 import {Ng2Webstorage} from 'ngx-webstorage';
 import { SearchFilterPipe } from './search-filter.pipe';
 import {AsyncLocalStorageModule} from 'angular-async-local-storage';
+import { LetterFilterPipe } from './letter-filter.pipe';
+import {NgPipesModule} from 'ngx-pipes';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import {AsyncLocalStorageModule} from 'angular-async-local-storage';
     SortPipe,
     ContactListHeaderComponent,
     PanelInteractionsComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    LetterFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,8 @@ import {AsyncLocalStorageModule} from 'angular-async-local-storage';
     ReactiveFormsModule,
     MatAutocompleteModule,
     Ng2Webstorage,
-    AsyncLocalStorageModule
+    AsyncLocalStorageModule,
+    NgPipesModule
   ],
   entryComponents: [NewContactComponent],
   providers: [],

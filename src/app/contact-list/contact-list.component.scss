@@ -45,6 +45,24 @@ mat-form-field {
   }
 }
 
+.hidden {
+  display: none;
+}
+
+.list-header {
+  font-weight: bold;
+  background: #E6E6E6;
+}
+
+.elements {
+  &:not(:first-child) {
+    display: none;
+  }
+}
+
+.elements > div:not(:first-child) {
+  display: none;
+}
 
 
 

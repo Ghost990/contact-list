@@ -11,12 +11,12 @@ import {LocalStorage, SessionStorage} from 'ngx-webstorage';
   styleUrls: ['./new-contact.component.scss']
 })
 export class NewContactComponent {
-  contacts = [];
+  @LocalStorage('contacts') contacts = this.localSt.retrieve('contacts');
   @ViewChild('contactListComponent') contactListComponent: ContactListComponent;
 
 
   constructor(public thisDialogRef: MatDialogRef<NewContactComponent>, @Inject(MAT_DIALOG_DATA) public data: string, public snackBar: MatSnackBar, private localSt: LocalStorageService) {
-    this.contacts = this.localSt.retrieve('contacts');
+
   }
 
   closeSnackBar() {
@@ -34,13 +34,7 @@ export class NewContactComponent {
 
     this.thisDialogRef.close();
 
-    let i = 0;
-    if (this.localSt.retrieve('created') === null) {
-      location.reload();
-    }
-    i++;
-    this.localSt.store('created', i);
-  }
+
 
 
 }
