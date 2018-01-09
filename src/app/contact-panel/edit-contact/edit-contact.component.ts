@@ -9,7 +9,7 @@ import {LocalStorage, LocalStorageService, SessionStorage} from 'ngx-webstorage'
   styleUrls: ['./edit-contact.component.scss']
 })
 export class EditContactComponent implements OnInit {
-  contacts = [];
+  @LocalStorage('contact') contacts = [];
   @Input() contact;
   @Input() showEdit;
   @Output() clickOnEdit = new EventEmitter<void>();
@@ -18,7 +18,6 @@ export class EditContactComponent implements OnInit {
 
   @ViewChild('singleId') input: ElementRef;
 
-  @LocalStorage();
   constructor(public snackBar: MatSnackBar, private localSt: LocalStorageService) {
 
     this.contacts = this.localSt.retrieve('contacts');
@@ -54,6 +53,14 @@ export class EditContactComponent implements OnInit {
 
     this.snackBar.open(`${name} is edited!`, 'Got it!');
     setTimeout(() => { this.closeSnackBar() }, 5000);
+
+    let i = 0;
+    if (this.localSt.retrieve('created') === null) {
+      location.reload();
+    }
+    i++;
+    this.localSt.store('created', i);
+
   }
 
 

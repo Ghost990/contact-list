@@ -5,7 +5,7 @@
  * from the API, in this case from the /assets/generated.json file.
  **/
 
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, IterableDiffers, DoCheck, OnChanges} from '@angular/core';
 import { Http } from '@angular/http';
 import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
@@ -33,7 +33,7 @@ import { NgModule } from '@angular/core';
   ]
 
 })
-export class ContactListComponent implements OnInit {
+export class ContactListComponent implements OnInit, DoCheck, OnChanges {
   contacts: any[];
   firstLetter: string[] = [];
   uniqueArray: string[] = [];
@@ -41,13 +41,14 @@ export class ContactListComponent implements OnInit {
   selected: any;
   stateForm: FormGroup;
   isSearching= false;
+  differ: any;
   @Output() selectedContact = new EventEmitter<void>();
   private url = 'assets/generated.json';
 
   @ViewChild('searchContact') searchInput: ElementRef;
 
 
-  constructor(private http: Http, private fb: FormBuilder, private localSt: LocalStorageService) {
+  constructor(public differs: IterableDiffers, private http: Http, private fb: FormBuilder, private localSt: LocalStorageService) {
 
     if (this.localSt.retrieve('contacts') === null) {
       this.getJsonContacts(http);
@@ -55,12 +56,28 @@ export class ContactListComponent implements OnInit {
       this.getLocalContacts();
     }
 
+    this.differ = differs.find([]).create(null);
 
     this.stateForm = new FormGroup({
       search: new FormControl()
     });
 
   }
+
+  // ngDoCheck() {
+  //   const change = this.differ.diff(this.contacts);
+  //   console.log(change);
+  //
+  //   // here you can do what you want on array change
+  //   // you can check for forEachAddedItem or forEachRemovedItem on change object to see the added/removed items
+  //   // Attention: ngDoCheck() is triggered at each binded variable on componenet; if you have more than one
+  //   // in your component, make sure you filter here the one you want.
+  // }
+  //
+  // ngOnChanges() {
+  //   this.contacts = this.localSt.retrieve('contacts');
+  //
+  // }
 
   ngOnInit() {
     this.localSt.observe('contact')

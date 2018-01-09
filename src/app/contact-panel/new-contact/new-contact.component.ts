@@ -14,7 +14,7 @@ export class NewContactComponent {
   contacts = [];
   @ViewChild('contactListComponent') contactListComponent: ContactListComponent;
 
-  @LocalStorage()
+
   constructor(public thisDialogRef: MatDialogRef<NewContactComponent>, @Inject(MAT_DIALOG_DATA) public data: string, public snackBar: MatSnackBar, private localSt: LocalStorageService) {
     this.contacts = this.localSt.retrieve('contacts');
   }
@@ -34,6 +34,12 @@ export class NewContactComponent {
 
     this.thisDialogRef.close();
 
+    let i = 0;
+    if (this.localSt.retrieve('created') === null) {
+      location.reload();
+    }
+    i++;
+    this.localSt.store('created', i);
   }
 
 

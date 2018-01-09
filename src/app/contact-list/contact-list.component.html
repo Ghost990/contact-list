@@ -16,7 +16,7 @@
 </div>
 
 <!-- Iterating through the unique letters array, creating a list item (groups) for the letters  -->
-<ul class="contact-list list-unstyled no-gutters" [@listAnimation]="contacts.length">
+<ul class="contact-list list-unstyled no-gutters" [@listAnimation]="contacts">
   <li *ngFor="let letter of uniqueArray | sort">
     <app-contact-list-header
     [letter]="letter"
