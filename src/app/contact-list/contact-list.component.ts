@@ -44,14 +44,10 @@ import {ContactListItemComponent} from './contact-list-item/contact-list-item.co
 })
 export class ContactListComponent implements OnInit {
   @LocalStorage('contacts') contacts: any[];
-  @LocalStorage('letters') firstLetter: string[] = [];
-  uniqueArray: string[] = [];
   contactCount: number;
   selected: any;
   stateForm: FormGroup;
-  isSearching= false;
   differ: any;
-  haveChildren: boolean;
   @Output() selectedContact = new EventEmitter<void>();
   alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
   private url = 'assets/generated.json';
