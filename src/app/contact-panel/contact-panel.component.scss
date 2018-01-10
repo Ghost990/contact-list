@@ -1,12 +1,19 @@
 @import '../../scss/variables';
+@import "../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
 
 .panel-main-content {
   background: white;
   min-height: 600px;
   padding: 50px;
+  @include media-breakpoint-down(sm) {
+    padding: 15px;
+  }
   .user-header-details {
     .user-details-favorite,
     .user-details-name {
+      @include media-breakpoint-down(md) {
+        border: none;
+      }
       border-top: 2px solid #E2E2E2;
       padding-top: 15px;
       font-size: 1.2em;
@@ -48,19 +55,31 @@
       .user-detail-prefix {
         opacity: .5;
         font-size: .9em;
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
       }
       .user-detail-suffix {
         opacity: .3;
         font-size: .9em;
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
       }
       .user-detail-suffix-withicon {
         padding-right: 0;
+        @include media-breakpoint-down(sm) {
+          display: none;
+        }
         .user-details-sendmail-text {
           display: inline-block;
           opacity: .3;
           font-size: .9em;
         }
         .user-details-sendmail-icon {
+          @include media-breakpoint-down(md) {
+            display: none;
+          }
           opacity: 1 !important;
           width: 20px;
           height: 20px;

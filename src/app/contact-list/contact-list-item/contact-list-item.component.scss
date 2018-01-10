@@ -1,4 +1,5 @@
 @import '../../../scss/variables';
+@import "../../../../node_modules/bootstrap/scss/bootstrap-grid.scss";
 
 $selected: #A8C7F5;
 
@@ -19,6 +20,9 @@ img {
   }
   .contact-image {
     padding: 0 15px 0 0;
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
   }
   &:hover {
     background: lighten( $selected, 10% );

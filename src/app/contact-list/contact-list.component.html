@@ -1,6 +1,6 @@
 <!-- Every keystroke filtering the Contact List for the result  -->
 <div class="row">
-  <div class="col-10 offset-1">
+  <div class="col-xl-10 offset-xl-1">
     <form class="search-form" [formGroup]="stateForm" novalidate>
       <mat-form-field class="search-field">
         <span matPrefix class="prefix" style="margin: 0 10px 10px 0;">
@@ -26,7 +26,7 @@
       <ng-container
         *ngFor="let contact of contacts | searchFilter: queryString">
         <div class="list-header" *ngIf="letter === contact.name.charAt(0)">
-          <div class="col-10 offset-2">
+          <div class="col-xs-10 offset-xl-2">
             {{ letter | unique }}
           </div>
         </div>

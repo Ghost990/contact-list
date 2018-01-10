@@ -3,6 +3,9 @@
 .interactions {
   padding-right: 20px;
   margin: 0 0 15px 0;
+  .interaction-block {
+    text-align: center;
+  }
   a {
     @include transition(transition, 0.5s);
     color: black;

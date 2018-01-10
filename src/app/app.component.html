@@ -9,7 +9,6 @@
       <div class="col-7">
 
         <app-contact-panel
-          [@visibilityChanged]="visibility"
           *ngIf="clickedContact; else infoText"
           [contact]="clickedContact"
         ></app-contact-panel>
