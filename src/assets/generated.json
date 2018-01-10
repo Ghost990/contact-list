@@ -2,7 +2,7 @@
   {
     "_id": "5a4d1dac1fa45abdcd277f49",
     "name": "Battle Welch",
-    "picture": "assets/profiles/business-q-c-64-64-3.jpg",
+    "picture": "assets/profiles/profile1.jpeg",
     "email": "battlewelch@noralex.com",
     "phone": "+1 (991) 507-3647",
     "company": "Work",
@@ -11,7 +11,7 @@
   {
     "_id": "5a4d1dacb9d84e9ed7696228",
     "name": "Hines Hayden",
-    "picture": "assets/profiles/business-q-c-64-64-7.jpg",
+    "picture": "assets/profiles/profile2.jpeg",
     "email": "hineshayden@quintity.com",
     "phone": "+1 (941) 595-3353",
     "company": "Family",
@@ -20,7 +20,7 @@
   {
     "_id": "5a4d1dac9bd0c725f8895ba2",
     "name": "Melva Holt",
-    "picture": "assets/profiles/business-q-c-64-64-10.jpg",
+    "picture": "assets/profiles/profile5.jpeg",
     "email": "melvaholt@escenta.com",
     "phone": "+1 (838) 514-3963",
     "company": "Friends",
@@ -29,7 +29,7 @@
   {
     "_id": "5a4d1dacd9af014cfb344402",
     "name": "Yolanda Wagner",
-    "picture": "assets/profiles/people-q-c-64-64-1.jpg",
+    "picture": "assets/profiles/profile3.jpeg",
     "email": "yolandawagner@enerforce.com",
     "phone": "+1 (989) 501-3397",
     "company": "Family",
@@ -38,7 +38,7 @@
   {
     "_id": "5a4d1dac9888f030bfa3bd35",
     "name": "Virgie Richard",
-    "picture": "assets/profiles/people-q-c-64-64-2.jpg",
+    "picture": "assets/profiles/profile6.jpeg",
     "email": "virgierichard@ginkle.com",
     "phone": "+1 (829) 403-3968",
     "company": "Friends",
@@ -47,7 +47,7 @@
   {
     "_id": "5a4d1dac3d18aa1920500d7a",
     "name": "Sexton Mccormick",
-    "picture": "assets/profiles/people-q-c-64-64-3.jpg",
+    "picture": "assets/profiles/profile8.jpeg",
     "email": "sextonmccormick@zensus.com",
     "phone": "+1 (814) 524-2956",
     "company": "Family",
@@ -56,7 +56,7 @@
   {
     "_id": "5a4d1dac03054b7f7e3b8a3e",
     "name": "Lynch Huber",
-    "picture": "assets/profiles/people-q-c-64-64-6.jpg",
+    "picture": "assets/profiles/profile4.jpeg",
     "email": "lynchhuber@moltonic.com",
     "phone": "+1 (943) 435-3924",
     "company": "Friends",
@@ -65,7 +65,7 @@
   {
     "_id": "5a4d1dac311e13d0e75c161d",
     "name": "Gloria Mendoza",
-    "picture": "assets/profiles/people-q-c-64-64-7.jpg",
+    "picture": "assets/profiles/profile11.jpeg",
     "email": "gloriamendoza@exostream.com",
     "phone": "+1 (944) 433-6472",
     "company": "Family",
@@ -74,7 +74,7 @@
   {
     "_id": "5a4d1dac17162624b9b44947",
     "name": "Elisa Boyer",
-    "picture": "assets/profiles/people-q-c-64-64-8.jpg",
+    "picture": "assets/profiles/profile10.jpeg",
     "email": "elisaboyer@zoid.com",
     "phone": "+1 (853) 520-2554",
     "company": "Work",
@@ -83,7 +83,7 @@
   {
     "_id": "5a4d1dac6d16476e210366c5",
     "name": "Lora Maldonado",
-    "picture": "assets/profiles/people-q-c-64-64-9.jpg",
+    "picture": "assets/profiles/profile7.jpeg",
     "email": "loramaldonado@zillan.com",
     "phone": "+1 (969) 526-2127",
     "company": "Work",

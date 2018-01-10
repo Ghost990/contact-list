@@ -3,9 +3,6 @@
 
 $selected: #A8C7F5;
 
-img {
-  max-height: 50px;
-}
 
 .contact-list-item-row {
   @include transition(transition, 0.5s);
@@ -20,6 +17,12 @@ img {
   }
   .contact-image {
     padding: 0 15px 0 0;
+    img {
+      object-fit: cover;
+      max-height: 50px;
+      height: 50px;
+      width: 50px;
+    }
     @include media-breakpoint-down(md) {
       display: none;
     }

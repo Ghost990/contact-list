@@ -35,7 +35,10 @@
     .user-details-image {
       padding: 0;
       img {
-        width: 100%;
+        object-fit: cover;
+        max-height: 100px;
+        height: 100px;
+        width: 100px;
       }
     }
   }
