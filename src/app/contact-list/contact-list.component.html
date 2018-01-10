@@ -21,6 +21,7 @@
 <ul id="contactRow" class="contact-list list-unstyled no-gutters" [@listAnimation]="contacts">
   <li
     *ngFor="let letter of alphabet | unique"
+    class="contact-row-wrapper"
     >
     <div class="elements">
       <ng-container

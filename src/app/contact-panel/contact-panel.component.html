@@ -4,13 +4,13 @@
 <div class="row panel-main-content" *ngIf="!showEdit">
   <div class="col-12 user-info-content">
     <div class="row user-header-details">
-      <div class="col-2 col-md-6 user-details-image">
+      <div class="col-6 col-xl-2 col-lg-2 col-md-6 user-details-image">
         <img [src]="contact.picture" class="img-fluid" alt="{{ contact.name }}">
       </div>
-      <div class="col-1 col-md-6 user-details-favorite">
+      <div class="col-6 col-xl-1 col-lg-1 col-md-6 user-details-favorite">
         <span class="star-empty"></span>
       </div>
-      <div class="col-9 col-md-12 user-details-name">
+      <div class="col-9 col-xl-9 col-lg-9 col-md-12 user-details-name">
         {{ contact.name }}
       </div>
     </div>
@@ -61,6 +61,5 @@
 </div>
 <app-edit-contact
   *ngIf="showEdit"
-  (editClicked)="showEditPanel()"
   [contact]="contact"
 ></app-edit-contact>

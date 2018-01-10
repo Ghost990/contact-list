@@ -1,6 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, NgModule} from '@angular/core';
 import {animate, animateChild, keyframes, query, stagger, style, transition, trigger} from '@angular/animations';
+import {ContactListComponent} from '../contact-list.component';
+import {SearchFilterPipe} from '../../search-filter.pipe';
 
+@NgModule({
+  imports: [SearchFilterPipe],
+  exports: [],
+  declarations: [ContactListItemComponent],
+  providers: [],
+})
 @Component({
   selector: 'app-contact-list-item',
   templateUrl: './contact-list-item.component.html',

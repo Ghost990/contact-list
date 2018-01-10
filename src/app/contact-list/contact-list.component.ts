@@ -10,12 +10,19 @@ import {
   AfterContentInit
 } from '@angular/core';
 import { Http } from '@angular/http';
-import {FormBuilder, FormGroup, FormControl} from '@angular/forms';
+import {FormBuilder, FormGroup, FormControl, ReactiveFormsModule} from '@angular/forms';
 import {LocalStorage, LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import { trigger, style, transition, animate, keyframes, query, stagger, animateChild } from '@angular/animations';
 import { SearchFilterPipe } from '../search-filter.pipe';
 import { NgModule } from '@angular/core';
+import {ContactListItemComponent} from './contact-list-item/contact-list-item.component';
 
+@NgModule({
+  imports: [ContactListItemComponent, SearchFilterPipe],
+  exports: [],
+  declarations: [ContactListComponent],
+  providers: [],
+})
 @Component({
   selector: 'app-contact-list',
   templateUrl: './contact-list.component.html',
@@ -48,6 +55,7 @@ export class ContactListComponent implements OnInit {
   @Output() selectedContact = new EventEmitter<void>();
   alphabet = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
   private url = 'assets/generated.json';
+  queryString;
 
   @ViewChild('searchContact') searchInput: ElementRef;
   @ViewChild('contactListHeader') contactHeader: ElementRef;

@@ -1,12 +1,22 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import {Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material';
 import {LocalStorage, LocalStorageService, SessionStorage} from 'ngx-webstorage';
+import {Overlay, OVERLAY_PROVIDERS, ScrollStrategyOptions} from '@angular/cdk/overlay';
+import {BrowserModule} from '@angular/platform-browser';
+import {PlatformModule} from '@angular/cdk/platform';
 
-
+@NgModule({
+  declarations: [ EditContactComponent ],
+  exports: [ EditContactComponent ],
+  imports: [MatSnackBar, MatSnackBarModule, BrowserModule],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  providers: [PlatformModule]
+})
 @Component({
   selector: 'app-edit-contact',
   templateUrl: './edit-contact.component.html',
-  styleUrls: ['./edit-contact.component.scss']
+  styleUrls: ['./edit-contact.component.scss'],
+  providers: [MatSnackBarModule, MatSnackBar, OVERLAY_PROVIDERS]
 })
 export class EditContactComponent implements OnInit {
   @LocalStorage('contacts') contacts = this.localSt.retrieve('contacts');

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { OrderModule } from 'ngx-order-pipe';
 
 
@@ -23,6 +23,8 @@ import {Ng2Webstorage} from 'ngx-webstorage';
 import { SearchFilterPipe } from './search-filter.pipe';
 import {AsyncLocalStorageModule} from 'angular-async-local-storage';
 import {NgPipesModule} from 'ngx-pipes';
+import {OVERLAY_PROVIDERS} from '@angular/cdk/overlay';
+import {PlatformModule} from '@angular/cdk/platform';
 
 
 @NgModule({
@@ -59,7 +61,11 @@ import {NgPipesModule} from 'ngx-pipes';
     NgPipesModule
   ],
   entryComponents: [NewContactComponent],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [OVERLAY_PROVIDERS, PlatformModule],
+  bootstrap: [AppComponent],
+  exports: [
+    ReactiveFormsModule
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
