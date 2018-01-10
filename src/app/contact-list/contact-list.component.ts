@@ -34,7 +34,6 @@ import { NgModule } from '@angular/core';
       ])
     ])
   ]
-
 })
 export class ContactListComponent implements OnInit {
   @LocalStorage('contacts') contacts: any[];
@@ -56,11 +55,7 @@ export class ContactListComponent implements OnInit {
 
   constructor(public differs: IterableDiffers, private http: Http, private fb: FormBuilder, private localSt: LocalStorageService) {
 
-    if (this.localSt.retrieve('contacts') === null) {
-      this.getJsonContacts(http);
-    } else {
-      this.getLocalContacts();
-    }
+    this.getContacts(http);
 
     this.differ = differs.find([]).create(null);
 
@@ -68,104 +63,36 @@ export class ContactListComponent implements OnInit {
       search: new FormControl()
     });
 
-
   }
-
-  // ngDoCheck() {
-  //   const change = this.differ.diff(this.contacts);
-  //   console.log(change);
-  //
-  //   // here you can do what you want on array change
-  //   // you can check for forEachAddedItem or forEachRemovedItem on change object to see the added/removed items
-  //   // Attention: ngDoCheck() is triggered at each binded letiable on componenet; if you have more than one
-  //   // in your component, make sure you filter here the one you want.
-  // }
-  //
-  // ngOnChanges() {
-  //   this.contacts = this.localSt.retrieve('contacts');
-  //
-  // }
-
 
   ngOnInit() {
     this.localSt.observe('contact')
       .subscribe((value) => this.contacts = this.localSt.retrieve('contacts'));
   }
 
-  removeDuplicates(arr) {
-    for (let i = 0; i < arr.length; i++) {
-      if (this.uniqueArray.indexOf(arr[i]) === -1) {
-        this.uniqueArray.push(arr[i]);
-      }
-    }
-    return this.uniqueArray;
-  }
+  // If there are no contacts in the Localstorage then get it from generated.json file and store it.
+  // Otherwise read it from Localstorage and load into view.
+  getContacts(http: Http) {
+    if (this.localSt.retrieve('contacts') === null) {
+      http.get(this.url).subscribe(response => {
+        this.contacts = response.json().sort(function(a, b) {
+          return a.name > b.name;
+        });
 
+        this.contactCount = this.contacts.length;
 
+        this.localSt.store('contacts', this.contacts);
 
-  getJsonContacts(http: Http) {
-    http.get(this.url).subscribe(response => {
-      this.contacts = response.json().sort(function(a, b) {
-        return a.name > b.name;
       });
-
-
-
-      /** Iterating through the contacts array and saving the first letter in another one **/
-
-      for (let contact of this.contacts) {
-        this.firstLetter.push(contact.name.charAt(0));
-      }
-
-      /** Removing duplicates from the array for every same starting letter
-       *  will be grouped under a single letter.
-       **/
-
-      this.removeDuplicates(this.firstLetter);
-
-      this.contactCount = this.contacts.length;
-
-      let JSONContacts = JSON.stringify(this.contacts);
-
-      this.localSt.store('contacts', this.contacts);
-      //localStorage.setItem('contacts', JSONContacts);
-
-
-
-    });
-  }
-
-  getLocalContacts() {
-    /** Iterating through the contacts array and saving the first letter in another one **/
-
-    //this.contacts = JSON.parse(this.localSt.retrieve('contacts'));
-    this.contacts = this.localSt.retrieve('contacts');
-    //this.contacts.push({_id: 20, name: 'Xena', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'none', phone: 'none', isFavorite: true, company: 'google'})
-    //localStorage.setItem('contacts', JSON.stringify(this.contacts));
-    //console.log(this.contacts);
-
-
-    for (let contact of this.contacts) {
-      this.firstLetter.push(contact.name.charAt(0));
+    } else {
+        this.contacts = this.localSt.retrieve('contacts');
+        this.contactCount = this.contacts.length;
     }
-
-
-    /** Removing duplicates from the array for every same starting letter
-     *  will be grouped under a single letter.
-     **/
-
-    this.removeDuplicates(this.firstLetter);
-
-    this.contactCount = this.contacts.length;
   }
 
+  // Getting the selected Contact to load into the panel and apply styling
   onContactSelected(contact) {
     this.selectedContact.emit(contact);
-  }
-
-  pushC() {
-    this.contacts.push({_id: 20, name: 'Alex', picture: 'assets/profiles/people-q-c-64-64-7.jpg', email: 'n', phone: 'n', isFavorite: false, company: 'google'});
-    localStorage.setItem('contacts', JSON.stringify(this.contacts));
   }
 
   select(item) {
@@ -175,15 +102,5 @@ export class ContactListComponent implements OnInit {
   isActive(item) {
     return this.selected === item;
   }
-
-
-  getSearchValue() {
-    if (this.searchInput.nativeElement.value.length > 0) {
-      this.isSearching = true;
-    } else {
-      this.isSearching = false;
-    }
-  }
-
 
 }

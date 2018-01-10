@@ -8,11 +8,8 @@ import { ContactListComponent } from './contact-list/contact-list.component';
 import { ContactPanelComponent } from './contact-panel/contact-panel.component';
 import { EditContactComponent } from './contact-panel/edit-contact/edit-contact.component';
 import { NewContactComponent } from './contact-panel/new-contact/new-contact.component';
-import { ContactSearchComponent } from './contact-list/contact-search/contact-search.component';
 import { ContactListItemComponent } from './contact-list/contact-list-item/contact-list-item.component';
 import {HttpModule} from '@angular/http';
-import { SortPipe } from './sort.pipe';
-import { ContactListHeaderComponent } from './contact-list/contact-list-header/contact-list-header.component';
 import { PanelInteractionsComponent } from './contact-panel/panel-interactions/panel-interactions.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {
@@ -25,7 +22,6 @@ import {FormsModule, NgModel, NgModelGroup, ReactiveFormsModule} from '@angular/
 import {Ng2Webstorage} from 'ngx-webstorage';
 import { SearchFilterPipe } from './search-filter.pipe';
 import {AsyncLocalStorageModule} from 'angular-async-local-storage';
-import { LetterFilterPipe } from './letter-filter.pipe';
 import {NgPipesModule} from 'ngx-pipes';
 
 
@@ -36,13 +32,9 @@ import {NgPipesModule} from 'ngx-pipes';
     ContactPanelComponent,
     EditContactComponent,
     NewContactComponent,
-    ContactSearchComponent,
     ContactListItemComponent,
-    SortPipe,
-    ContactListHeaderComponent,
     PanelInteractionsComponent,
-    SearchFilterPipe,
-    LetterFilterPipe
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

@@ -37,18 +37,23 @@
       </div>
       <div class="row">
         <div class="col-12">
+          <!--<mat-form-field>-->
+            <!--<mat-select placeholder="Select Group" #group>-->
+              <!--<mat-option value="Family">Family</mat-option>-->
+              <!--<mat-option value="Friends">Friends</mat-option>-->
+              <!--<mat-option value="Work">Work</mat-option>-->
+            <!--</mat-select>-->
+          <!--</mat-form-field>-->
           <mat-form-field>
-            <mat-select placeholder="Select Group" #group>
-              <mat-option value="Family">Family</mat-option>
-              <mat-option value="Friends">Friends</mat-option>
-              <mat-option value="Work">Work</mat-option>
-            </mat-select>
+            <input type="text" matInput placeholder="Contact Group"
+                   #group
+                   required
+            >
           </mat-form-field>
         </div>
       </div>
     </form>
   </mat-dialog-content>
-  <strong>{{ data }}</strong>
   <mat-dialog-actions>
     <button mat-raised-button mat-dialog-close (click)="onSubmit(name.value, phone.value, email.value, group.value)">Add New Contact</button>
     <!-- Can optionally provide a result for the closing dialog. -->

@@ -19,19 +19,17 @@ export class EditContactComponent implements OnInit {
   @ViewChild('singleId') input: ElementRef;
 
   constructor(public snackBar: MatSnackBar, private localSt: LocalStorageService) {
-
     this.contacts = this.localSt.retrieve('contacts');
-
   }
 
   ngOnInit() {
-
   }
 
   closeSnackBar() {
     return this.snackBar.dismiss();
   }
 
+  // Updating the contact with the updated values from the input
   onContactUpdate(id: string, name: string, phone: string, email: string, group: string, picture: string) {
 
     this.newItem = {
@@ -48,15 +46,10 @@ export class EditContactComponent implements OnInit {
     this.contacts = this.localSt.retrieve('contacts');
 
     this.contacts[index] = this.newItem;
-    //localStorage.setItem('contacts', JSON.stringify(this.contacts));
     this.localSt.store('contacts', this.contacts);
 
     this.snackBar.open(`${name} is edited!`, 'Got it!');
     setTimeout(() => { this.closeSnackBar(); }, 5000);
 
-
   }
-
-
-
 }
